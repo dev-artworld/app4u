@@ -1,0 +1,283 @@
+var server = "http://apps4u.myworkspacefiles.com/app4u/";
+
+function getSubCategories(category_id){
+	//alert(category_id)
+
+	jQuery.ajax({
+    url:"http://apps4u.myworkspacefiles.com/?source=app&action=single_category",
+    data: {term_id: category_id},
+    type:"GET",
+    async:true,
+    beforeSend:function(){
+     myApp.showIndicator();
+    },
+    success:function(res){
+        
+        var apps_html = "";
+        
+        var data =JSON.parse(res);
+
+        if(data.data == "subcategories"){
+
+          category_apps_by_id(category_id);
+       
+	        for(var i=0;i<data.subcategories.length;i++){
+	            apps_html += '<a onclick="category_apps_by_id('+data.subcategories[i].id+')" class="tab-link" href="#'+data.subcategories[i].slug+'">'+data.subcategories[i].name+'</a>'; 
+	        }
+
+	        jQuery(".sub-tabber").html(apps_html);
+
+    	} else if(data.data == "apps") {
+          
+    		for(var i=0;i<data.apps.length;i++){
+	          apps_html += '<li>';
+            apps_html += '<div class="app-img"><a  onclick="get_app_single_view('+data.apps[i].id+')" href="javascript:void(0)"><img src="'+data.apps[i].image+'"/></a></div>';
+				    apps_html += '<div class="app-video-row"><a href="'+data.apps[i].video_url+'"><i class="fa fa-play-circle-o" aria-hidden="true"></i>Watch Demo</a></div>';
+            apps_html += '<div class="app-title">'+data.apps[i].post_title+'</div>';
+            apps_html += '<div class="rating-price-row">'
+				    apps_html += '<div class="rating-col"><img data-rating="'+data.apps[i].review.review_rating+'" src="img/stars-rating-img.png" alt=""/></div>';
+			      apps_html += '<div class="price-col">'+data.apps[i].price+'</div>';
+				    apps_html += '<div class="clear"></div>';
+				    apps_html += '</div>';
+				    apps_html += '<div class="download-btn-row"><a href="'+data.apps[i].download+'">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>';
+				    apps_html += '</li>';
+
+	        }
+
+        apps_html +='<div class="clear"></div>';
+        jQuery(".cat-apps-wrapper ul#apps_list").html(apps_html);
+        jQuery(".sub-tabber").html("");
+
+    	}
+
+    },
+    complete:function(){
+      myApp.hideIndicator();
+    }
+  });
+
+}
+
+function getHomeSlider()
+{
+   
+    jQuery.ajax({
+        url:"http://apps4u.myworkspacefiles.com/?source=app&action=app_slider",
+        type:"Get",
+       
+        async:true,
+        beforeSend:function(){
+            myApp.showIndicator();
+        },
+        success:function(res){
+            var slide_html = "";
+            var data = JSON.parse(res);
+
+            for(var i=0;i<data.slides.length;i++){
+                slide_html += '<div class="swiper-slide">';
+                slide_html += '<img src="'+data.slides[i].image+'" width="100%" height="auto" alt=""/>';
+                slide_html += '<div class="custom-caption">';
+                slide_html += '<h3>'+data.slides[i].post_title+'</h3>';
+                slide_html += '<p>'+data.slides[i].post_content+'</p>';
+                slide_html += '</div>';
+                slide_html += '</div>';
+
+            }
+
+           jQuery("#home_page .category-slider .swiper-wrapper").html(slide_html);
+
+           jQuery("#home_page .category-slider").find('.swiper-container')[0].swiper.update();
+
+        },
+        complete:function(){
+            //myApp.hideIndicator();
+        }
+    });
+
+}
+
+function category_apps_by_id(category_id){
+
+    myApp.showIndicator();
+    jQuery.ajax({
+      url:"http://apps4u.myworkspacefiles.com/?source=app&action=get_apps",
+      data: {term_id: category_id},
+      type:"GET",
+      async:true,
+      beforeSend:function(){
+       myApp.showIndicator();
+      },
+    success:function(res){
+        
+        var apps_html = "";
+        
+        var data =JSON.parse(res);
+
+        for(var i=0;i<data.apps.length;i++){
+            
+            if(data.apps[i].review != null){
+              var review = data.apps[i].review.review_rating;
+            }
+
+            apps_html += '<li>';   
+               apps_html += '<div class="app-img"><a onclick="get_app_single_view('+data.apps[i].post_id+')" href="javascript:void(0)"><img src="'+data.apps[i].image+'"/></a></div>';
+               apps_html += '<div class="app-video-row"><a data-picker=".picker-1" class="link open-picker" src="'+data.apps[i].video_url+'"><i class="fa fa-play-circle-o" aria-hidden="true"></i>Watch Demo</a></div>';
+               apps_html += '<div class="app-title">'+data.apps[i].post_title+'</div>';
+               apps_html += '<div class="rating-price-row">'
+               apps_html += '<div class="rating-col"><img data-rating="'+review+'" src="img/stars-rating-img.png" alt=""/></div>';
+               apps_html += '<div class="price-col">'+data.apps[i].price+'</div>';
+               apps_html += '<div class="clear"></div>';
+               apps_html += '</div>';
+               apps_html += '<div class="download-btn-row"><a href="'+data.apps[i].download+'">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>';
+             apps_html += '</li>';
+              }
+
+           
+        apps_html +=' <div class="clear"></div>';
+        jQuery(".cat-apps-wrapper ul#apps_list").html(apps_html);
+        jQuery('.link.open-picker').click(function(){ 
+        var video_url = jQuery(this).attr("src"); 
+        jQuery("#video_link").attr("src",video_url) });
+        
+       
+    },
+    complete:function(){
+      myApp.hideIndicator();
+    }
+  });
+
+}
+
+function featuredApp() 
+{
+       jQuery.ajax({
+       url:"http://apps4u.myworkspacefiles.com/?source=app&action=single_app&ID=983",
+       type:"GET",
+       async:true,
+       beforeSend:function(){
+       myApp.showIndicator();
+      },
+       success:function(res){
+        
+     var apps_html = "";
+     var data =JSON.parse(res);
+     for(var i=0;i<data.length;i++)
+     {
+       apps_html +=  '<div class="left-col">';
+       apps_html +=  '<div class="fea-product">';
+       apps_html +=  '<div class="box-title">Featured App</div>';  
+       apps_html +=  '<div class="app-img"><img src="'+data[i].Featured_Image+'"/></div>';
+       apps_html +=  '<div class="app-title">'+data[i].app_title+'</div>';   
+       apps_html +=  '<div class="rating-price-col">';
+       apps_html +=  '<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>';
+       apps_html +=  '<div class="price-col">'+data[i].price+'</div>';
+       apps_html +=  '<div class="clear"></div>';
+       apps_html +=  '</div>'; 
+       apps_html +=  '<div class="divownload-btn-row"><a onclick="get_app_single_view('+data[i].id+')" href="javascript:void(0)">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>';
+       apps_html +=  '</div>';
+       apps_html +=  '</div>';
+       apps_html +=  '<div class="right-col">';
+       apps_html +=  '<iframe style="height: 150px; margin-top: 6px;" width="100%" src="'+data[i].video_url+'"></iframe>';
+       apps_html +=  '</div>';
+      }
+      apps_html +=' <div class="clear"></div>';
+      jQuery(".featured-app-row").html(apps_html);
+
+     },
+      complete:function(){
+      //myApp.hideIndicator();
+    }
+  });
+
+}
+
+function getrelatedApps(category_id){
+  jQuery.ajax({
+      url:"http://apps4u.myworkspacefiles.com/?source=app&action=single_category&term_id="+category_id,
+      type:"GET",
+      async:true,
+      beforeSend:function(){
+          myApp.showIndicator();
+      },
+      success:function(res){
+          var data = JSON.parse(res);
+
+          var Related_html = "";
+          var appImageURL = "";
+          
+          if(data.apps.length > 0){
+            for (var i=0;i<data.apps.length;i++) {
+                
+                if (data.apps[i].image == false) {
+                    appImageURL = "img/google-free-play.png";  
+                }else{
+                    appImageURL = data.apps[i].image;
+                }
+
+                Related_html += '<li id="'+data.apps[i].id+'">';
+                Related_html +=     '<a onclick="get_related_app_view('+data.apps[i].id+')" href="javascript:void(0)">';
+                Related_html +=         '<img src="'+appImageURL+'" alt=""/>';
+                Related_html +=     '</a>';
+                Related_html +=     '<h3>'+data.apps[i].post_title+'</h3>';
+                Related_html +=     '<a href="'+data.apps[i].download+'" class="download-btn">Download</a>';
+                Related_html +=  '</li>';
+            }
+           
+            jQuery("#app_detail_page .app-detail-top-i").find(".related-apps-wrapper ul").html(Related_html);
+          } else {
+            jQuery("#app_detail_page .app-detail-top-i").hide();
+          }
+
+      },
+      complete:function(){
+          myApp.hideIndicator();
+      }
+  });
+}
+
+function get_app_single_view(app_id){
+  localStorage.setItem("app_id",app_id);
+  mainView.router.loadPage("app-detail.html");
+}
+
+function get_related_app_view(app_id){
+  localStorage.setItem("app_id",app_id);
+  mainView.reloadPage("app-detail.html");
+}
+
+function submit_app_review(){
+
+ 
+	var review_title = jQuery("input[name='review_title']").val();
+	var review_name = jQuery("input[name='review_name']").val();
+	var review_email = jQuery("input[name='review_email']").val();
+	var review_website = jQuery("input[name='review_website']").val();
+	var rating = jQuery("input[name='star']:checked").val();
+	var review_content = jQuery("input[name='review_content']").val(); 
+	var app_id = localStorage.getItem("app_id");
+
+	jQuery.ajax({
+        url:"http://apps4u.myworkspacefiles.com/wp-admin/admin-ajax.php?action=wpcr3-ajax",
+        type:"POST",
+        data:{"wpcr3_ajaxAct":"form","wpcr3_checkid":app_id,"wpcr3_fconfirm1":0,"wpcr3_fconfirm2":1,"wpcr3_fconfirm3":1,"wpcr3_femail":review_email,"wpcr3_fname":review_name,"wpcr3_frating":rating,"wpcr3_ftext":review_content,"wpcr3_ftitle":review_title,"wpcr3_fwebsite":review_website,"wpcr3_postid":app_id},
+        async:true,
+        beforeSend:function(){
+            myApp.showIndicator();
+        },
+        success:function(res){
+           
+           console.log(res);
+
+        },
+        complete:function(){
+            myApp.hideIndicator();
+        }
+    });
+
+}
+
+function open_video_url()
+{
+   
+
+}

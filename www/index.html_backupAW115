@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#2196f3">
+    <title>Framework7 Material</title>
+    <link rel="stylesheet" href="css/framework7.material.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Roboto:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/material-icons.css">
+    <link rel="stylesheet" href="css/kitchen-sink.css">
+    
+    <link rel="stylesheet" href="css/template.css">
+    <link href="font-icons/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <link rel="icon" href="img/icon.png">
+  </head>
+  <body>
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <!--left panel
+    ======================================================================-->
+    <div class="panel panel-left panel-cover">
+      <div class="view navbar-fixed">
+        <div class="pages">
+          <div data-page="panel-left" class="page">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="center">Left Panel</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--END-->
+    
+    <div class="views">
+      <div class="view view-main">
+        <div class="pages navbar-fixed">
+          <div data-page="home" class="page">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+      <div class="center">Going Viral<a href="home.html"><i class="fa fa-home" aria-hidden="true" ></i> </a></div>
+      <div class="right"><a href="#" class="open-panel link icon-only"><i class="fa fa-search" aria-hidden="true"></i></a><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+    </div>
+  </div>
+  
+  <div class="toolbar toolbar-bottom">
+    <div class="toolbar-inner">
+    	<div class="footer-nav">
+        	<a href="home.html" class="link link-1"><i class="fa fa-plus" aria-hidden="true"></i><span>Last Week New Apps</span></a>
+            <a href="home.html" class="link link-2"><i class="fa fa-star" aria-hidden="true"></i><span>Top App Picks</span></a>
+            <a href="home.html" class="link link-3"><i class="fa fa-check" aria-hidden="true"></i><span>Most Downloads</span></a>
+            <a href="home.html" class="link link-4"><i class="fa fa-dashboard" aria-hidden="true"></i><span>Coming On Fast</span></a>
+            <a href="home.html" class="link link-5"><i class="fa fa-heart" aria-hidden="true"></i><span>Most Unique</span></a>
+        </div>
+    </div>
+  </div>
+  
+  <div class="page-content">
+  	<!--App Category Page-->
+    <div class="app-category-page">
+    	<!--Slider-->
+        <div class="category-slider">
+        	<div data-pagination=".swiper-pagination-c2" data-space-between="0" data-slides-per-view="2" class="swiper-container swiper-init ks-carousel-slider">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+           	    	<img src="img/slider-img.png" width="100%" height="auto" alt=""/>
+                    <div class="custom-caption">
+                    	<h3>Pre-Register Today!</h3>
+                        <p>Clash Royale Coming Soon</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/slider-img.png" width="100%" height="auto" alt=""/> 
+                    <div class="custom-caption">
+                    	<h3>Pre-Register Today!</h3>
+                        <p>Clash Royale Coming Soon</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/slider-img.png" width="100%" height="auto" alt=""/> 
+                    <div class="custom-caption">
+                    	<h3>Pre-Register Today!</h3>
+                        <p>Clash Royale Coming Soon</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/slider-img.png" width="100%" height="auto" alt=""/> 
+                    <div class="custom-caption">
+                    	<h3>Pre-Register Today!</h3>
+                        <p>Clash Royale Coming Soon</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/slider-img.png" width="100%" height="auto" alt=""/>
+                    <div class="custom-caption">
+                    	<h3>Pre-Register Today!</h3>
+                        <p>Clash Royale Coming Soon</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!--END-->
+        <!--app internal categories-->
+        <div class="maininner-wrapper">
+        	<!--tabs navigation-->
+        	  <div class="tabbar cat-tabs">
+                <div class="cat-tabs-inner" >
+                    <a href="#business-cat" class="active tab-link tab-link1"><img src="img/business-tab-icon.png" alt=""/><span>Business</span></a>
+                    <a href="#education-cat" class="tab-link tab-link2"><img src="img/education-tab-icon.png" alt=""/><span>Education</span></a>
+                    <a href="#lifestyle-cat" class="tab-link tab-link3"><img src="img/lifestyle-tab-icon.png" alt=""/><span>Lifestyle</span></a>
+                    <a href="#entertainment-cat" class="tab-link tab-link4"><img src="img/genre-tab-icon.png" alt=""/><span>Entertainment</span></a>
+                    <a href="#business-cat" class="tab-link tab-link5"><img src="img/business-tab-icon.png" alt=""/><span>Business</span></a>
+                    <a href="#education-cat" class="tab-link tab-link6"><img src="img/business-tab-icon.png" alt=""/><span>Education</span></a>
+                    <a href="#lifestyle-cat" class="tab-link tab-link7"><img src="img/business-tab-icon.png" alt=""/><span>Lifestyle</span></a>
+                    <a href="#entertainment-cat" class="tab-link tab-link8"><img src="img/business-tab-icon.png" alt=""/><span>Entertainment</span></a>
+                </div>
+              </div>
+              <div class="sub-tabber">
+              	<a href="#business-sub-cat1" class="active tab-link">Business</a>
+                <a href="#business-sub-cat2" class="tab-link">Education</a>
+                <a href="#business-sub-cat3" class="tab-link">Lifestyle</a>
+                <a href="#business-sub-cat4" class="active tab-link">Entertainment</a>
+              </div>
+              <!--END Tabs navigation-->
+              <!--tabs content-->
+              <div class="tabs-swipeable-wrap">
+                <div class="tabs">
+                  <div id="business-cat" class="tab active">
+                  	<!--cat apps wrapper-->
+                    <div class="cat-apps-wrapper">
+                    	<ul>
+                        	<li>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <!--end-->
+                    <!--featured app-->
+                    <div class="featured-app-row">
+                    	<div class="left-col">
+                        	<div class="fea-product">
+                                <div class="box-title">Featured App</div>
+                                <div class="app-img"><img src="img/featured-app-img.png"/></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-col">
+                                    <div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="right-col"><img src="img/app-video-img.jpg"/></div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--END featured app-->
+                    <!--cat apps wrapper-->
+                    <div class="cat-apps-wrapper">
+                    	<ul>
+                        	<li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <!--end-->
+                    <!--hidden gems and viral apps links-->
+                    <div class="hidden-viral-apps-row">
+                    	<div class="hidden-gems-block">
+                          <div class="box-img"><img src="img/gems-banner-img.png" alt=""/></div>
+                          <div class="box-title">Discover Apps You Missed <span>hidden gems <i class="fa fa-angle-right" aria-hidden="true"></i></span></div>
+                      </div>
+                        <div class="viral-block">
+                        	<div class="box-img"><img src="img/viral-banner-img.png" alt=""/></div>
+                            <div class="box-title">Discover Great Apps <span>Going viral <i class="fa fa-angle-right" aria-hidden="true"></i></span></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--END-->
+                  </div>
+                  <div id="education-cat" class="tab">
+                  	<!--cat apps wrapper-->
+                    <div class="cat-apps-wrapper">
+                    	<ul>
+                        	<li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <!--end-->
+                    <!--featured app-->
+                    <div class="featured-app-row">
+                    	<div class="left-col">
+                        	<div class="fea-product">
+                                <div class="box-title">Featured App</div>
+                                <div class="app-img"><img src="img/featured-app-img.png"/></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-col">
+                                    <div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="right-col"><img src="img/app-video-img.jpg"/></div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--END featured app-->
+                    <!--cat apps wrapper-->
+                    <div class="cat-apps-wrapper">
+                    	<ul>
+                        	<li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <!--end-->
+                    <!--hidden gems and viral apps links-->
+                    <div class="hidden-viral-apps-row">
+                    	<div class="hidden-gems-block">
+                          <div class="box-img"><img src="img/gems-banner-img.png" alt=""/></div>
+                          <div class="box-title">Discover Apps You Missed <span>hidden gems <i class="fa fa-angle-right" aria-hidden="true"></i></span></div>
+                      </div>
+                        <div class="viral-block">
+                        	<div class="box-img"><img src="img/viral-banner-img.png" alt=""/></div>
+                            <div class="box-title">Discover Great Apps <span>Going viral <i class="fa fa-angle-right" aria-hidden="true"></i></span></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--END-->
+                  </div>
+                  <div id="lifestyle-cat" class="tab">
+                  	<!--cat apps wrapper-->
+                    <div class="cat-apps-wrapper">
+                    	<ul>
+                        	<li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <!--end-->
+                    <!--featured app-->
+                    <div class="featured-app-row">
+                    	<div class="left-col">
+                        	<div class="fea-product">
+                                <div class="box-title">Featured App</div>
+                                <div class="app-img"><img src="img/featured-app-img.png"/></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-col">
+                                    <div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="right-col"><img src="img/app-video-img.jpg"/></div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--END featured app-->
+                    <!--cat apps wrapper-->
+                    <div class="cat-apps-wrapper">
+                    	<ul>
+                        	<li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <!--end-->
+                    <!--hidden gems and viral apps links-->
+                    <div class="hidden-viral-apps-row">
+                    	<div class="hidden-gems-block">
+                          <div class="box-img"><img src="img/gems-banner-img.png" alt=""/></div>
+                          <div class="box-title">Discover Apps You Missed <span>hidden gems <i class="fa fa-angle-right" aria-hidden="true"></i></span></div>
+                      </div>
+                        <div class="viral-block">
+                        	<div class="box-img"><img src="img/viral-banner-img.png" alt=""/></div>
+                            <div class="box-title">Discover Great Apps <span>Going viral <i class="fa fa-angle-right" aria-hidden="true"></i></span></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--END-->
+                  </div>
+                  <div id="entertainment-cat" class="tab">
+                  	<!--cat apps wrapper-->
+                    <div class="cat-apps-wrapper">
+                    	<ul>
+                        	<li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <!--end-->
+                    <!--featured app-->
+                    <div class="featured-app-row">
+                    	<div class="left-col">
+                        	<div class="fea-product">
+                                <div class="box-title">Featured App</div>
+                                <div class="app-img"><img src="img/featured-app-img.png"/></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-col">
+                                    <div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="right-col"><img src="img/app-video-img.jpg"/></div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--END featured app-->
+                    <!--cat apps wrapper-->
+                    <div class="cat-apps-wrapper">
+                    	<ul>
+                        	<li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="app-img"><a href="#"><img src="img/app-img.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <li>
+                            	<div class="free-txt">Free</div>
+                            	<div class="app-img"><a href="app-detail.html"><img src="img/app-img2.jpg"/></a></div>
+                                <div class="app-video-row"><a href="#"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Demo</a></div>
+                                <div class="app-title">Polaris Office</div>
+                                <div class="rating-price-row">
+                                	<div class="rating-col"><img src="img/stars-rating-img.png" alt=""/></div>
+                                    <div class="price-col">$1.29</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <!--end-->
+                    <!--hidden gems and viral apps links-->
+                    <div class="hidden-viral-apps-row">
+                    	<div class="hidden-gems-block">
+                          <div class="box-img"><img src="img/gems-banner-img.png" alt=""/></div>
+                          <div class="box-title">Discover Apps You Missed <span>hidden gems <i class="fa fa-angle-right" aria-hidden="true"></i></span></div>
+                      </div>
+                        <div class="viral-block">
+                        	<div class="box-img"><img src="img/viral-banner-img.png" alt=""/></div>
+                            <div class="box-title">Discover Great Apps <span>Going viral <i class="fa fa-angle-right" aria-hidden="true"></i></span></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--END-->
+                  </div>
+                </div>
+              </div>
+              <!--END-->
+        </div>
+        <!--end-->
+    </div>
+    <!--END-->
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="popup demo-popup">
+      <div class="view navbar-fixed">
+        <div class="pages">
+          <div class="page">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="center">Popup Title</div>
+                <div class="right"><a href="#" class="link close-popup">Done</a></div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="content-block">
+                <p>Here comes popup. You can put here anything, even independent view with its own navigation. Also not, that by default popup looks a bit different on iPhone/iPod and iPad, on iPhone it is fullscreen.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus mauris leo, eu bibendum neque congue non. Ut leo mauris, eleifend eu commodo a, egestas ac urna. Maecenas in lacus faucibus, viverra ipsum pulvinar, molestie arcu. Etiam lacinia venenatis dignissim. Suspendisse non nisl semper tellus malesuada suscipit eu et eros. Nulla eu enim quis quam elementum vulputate. Mauris ornare consequat nunc viverra pellentesque. Aenean semper eu massa sit amet aliquam. Integer et neque sed libero mollis elementum at vitae ligula. Vestibulum pharetra sed libero sed porttitor. Suspendisse a faucibus lectus.</p>
+                <p>Duis ut mauris sollicitudin, venenatis nisi sed, luctus ligula. Phasellus blandit nisl ut lorem semper pharetra. Nullam tortor nibh, suscipit in consequat vel, feugiat sed quam. Nam risus libero, auctor vel tristique ac, malesuada ut ante. Sed molestie, est in eleifend sagittis, leo tortor ullamcorper erat, at vulputate eros sapien nec libero. Mauris dapibus laoreet nibh quis bibendum. Fusce dolor sem, suscipit in iaculis id, pharetra at urna. Pellentesque tempor congue massa quis faucibus. Vestibulum nunc eros, convallis blandit dui sit amet, gravida adipiscing libero.</p>
+                <p>Morbi posuere ipsum nisl, accumsan tincidunt nibh lobortis sit amet. Proin felis lorem, dictum vel nulla quis, lobortis dignissim nunc. Pellentesque dapibus urna ut imperdiet mattis. Proin purus diam, accumsan ut mollis ac, vulputate nec metus. Etiam at risus neque. Fusce tincidunt, risus in faucibus lobortis, diam mi blandit nunc, quis molestie dolor tellus ac enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum turpis a velit vestibulum pharetra. Vivamus blandit dapibus cursus. Aenean lorem augue, vehicula in eleifend ut, imperdiet quis felis.</p>
+                <p>Duis non erat vel lacus consectetur ultricies. Sed non velit dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel varius mi, a tristique ante. Vivamus eget nibh ac elit tempor bibendum sit amet vitae velit. Proin sit amet dapibus nunc, non porta tellus. Fusce interdum vulputate imperdiet. Sed faucibus metus at pharetra fringilla. Fusce mattis orci et massa congue, eget dapibus ante rhoncus. Morbi semper sed tellus vel dignissim. Cras vestibulum, sapien in suscipit tincidunt, lectus mi sodales purus, at egestas ligula dui vel erat. Etiam cursus neque eu lectus eleifend accumsan vitae non leo. Aliquam scelerisque nisl sed lacus suscipit, ac consectetur sapien volutpat. Etiam nulla diam, accumsan ut enim vel, hendrerit venenatis sem. Vestibulum convallis justo vitae pharetra consequat. Mauris sollicitudin ac quam non congue.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popover popover-menu">
+      <div class="popover-inner">
+        <div class="list-block">
+          <ul>
+            <li><a href="modals.html" class="list-button item-link">Modals</a></li>
+            <li><a href="popover.html" class="list-button item-link">Popover</a></li>
+            <li><a href="tabs.html" class="list-button item-link">Tabs</a></li>
+            <li><a href="panels.html" class="list-button item-link">Side Panels</a></li>
+            <li><a href="list-view.html" class="list-button item-link">List View</a></li>
+            <li><a href="forms.html" class="list-button item-link">Forms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="popover popover-music">
+      <div class="popover-inner">
+        <div class="list-block media-list">
+          <ul>
+            <li><a href="#" class="item-link item-content">
+                <div class="item-media"><img src="http://lorempixel.com/88/88/people/1" width="44"></div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">Yellow Submarine</div>
+                  </div>
+                  <div class="item-subtitle">Beatles</div>
+                </div></a></li>
+            <li><a href="#" class="item-link item-content">
+                <div class="item-media"><img src="http://lorempixel.com/88/88/people/2" width="44"></div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">Don't Stop Me Now</div>
+                  </div>
+                  <div class="item-subtitle">Queen</div>
+                </div></a></li>
+            <li><a href="#" class="item-link item-content">
+                <div class="item-media"><img src="http://lorempixel.com/88/88/people/3" width="44"></div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">Billie Jean</div>
+                  </div>
+                  <div class="item-subtitle">Michael Jackson</div>
+                </div></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="popover popover-contacts">
+      <div class="popover-inner">
+        <div class="list-block media-list">
+          <ul>
+            <li class="item-content">
+              <div class="item-media"><img src="http://lorempixel.com/88/88/people/1" width="40"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Ali Connors</div>
+                </div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-media"><img src="http://lorempixel.com/88/88/people/2" width="40"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Sandra Adams</div>
+                </div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-media"><img src="http://lorempixel.com/88/88/people/3" width="40"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Trevor Hansen</div>
+                </div>
+              </div>
+            </li>
+            <li><a href="#" class="item-link item-content bg-purple color-white ripple-white">
+                <div class="item-media"><i class="icon material-icons">mode_edit</i></div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">Add New</div>
+                  </div>
+                </div></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="login-screen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">Framework7</div>
+            <form>
+              <div class="list-block inputs-list">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Username</div>
+                      <div class="item-input">
+                        <input type="text" name="username" placeholder="Your username">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Password</div>
+                      <div class="item-input">
+                        <input type="password" name="password" placeholder="Your password">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="content-block"><a href="#" class="button button-big">Sign In</a></div>
+              <div class="content-block">
+                <div class="list-block-label">Some text about login information.<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="picker-modal picker-modal-demo">
+      <div class="toolbar">
+        <div class="toolbar-inner">
+          <div class="left"></div>
+          <div class="right"><a href="#" class="link close-picker">Done</a></div>
+        </div>
+      </div>
+      <div class="picker-modal-inner">
+        <div class="content-block">Integer mollis nulla id nibh elementum finibus. Maecenas eget fermentum ipsum. Sed sagittis condimentum nisl at tempus. Duis lacus libero, laoreet vitae ligula a, aliquet eleifend sapien. Nullam sodales viverra sodales.</div>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/framework7.js"></script>
+    <script type="text/javascript" src="js/kitchen-sink.js"></script>
+    <script type="text/javascript">
+   //     alert("Index.html")
+    </script>
+  </body>
+</html>

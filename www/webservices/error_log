@@ -1,0 +1,161 @@
+[24-Oct-2016 03:00:02 America/Denver] PHP Notice:  Trying to get property of non-object in /home5/artworl4/public_html/sensor/webservice/model.php on line 24
+[24-Oct-2016 03:00:21 America/Denver] PHP Notice:  Trying to get property of non-object in /home5/artworl4/public_html/sensor/webservice/model.php on line 24
+[01-Nov-2016 05:30:08 America/Denver] PHP Notice:  Undefined index: first_name in /home5/artworl4/public_html/sensor/webservice/controller.php on line 31
+[01-Nov-2016 05:30:08 America/Denver] PHP Notice:  Undefined index: last_name in /home5/artworl4/public_html/sensor/webservice/controller.php on line 32
+[01-Nov-2016 05:30:08 America/Denver] PHP Notice:  Undefined index: email in /home5/artworl4/public_html/sensor/webservice/controller.php on line 33
+[01-Nov-2016 05:30:08 America/Denver] PHP Notice:  Undefined index: password in /home5/artworl4/public_html/sensor/webservice/controller.php on line 34
+[23-Nov-2016 23:58:16 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[23-Nov-2016 23:58:16 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[23-Nov-2016 23:58:16 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[23-Nov-2016 23:58:16 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 7
+[23-Nov-2016 23:58:16 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 58
+[23-Nov-2016 23:58:16 America/Denver] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 59
+[23-Nov-2016 23:58:53 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[23-Nov-2016 23:58:53 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[23-Nov-2016 23:58:53 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[23-Nov-2016 23:58:53 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 7
+[23-Nov-2016 23:58:53 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 58
+[23-Nov-2016 23:58:53 America/Denver] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 59
+[24-Nov-2016 00:00:02 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 00:00:02 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 00:00:02 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 00:00:02 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 7
+[24-Nov-2016 00:00:02 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 58
+[24-Nov-2016 00:00:02 America/Denver] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 59
+[24-Nov-2016 00:01:33 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 00:01:33 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 00:01:33 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 00:01:33 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 7
+[24-Nov-2016 00:01:33 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 58
+[24-Nov-2016 00:01:33 America/Denver] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 59
+[24-Nov-2016 00:02:11 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 00:02:11 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 00:02:11 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 00:02:11 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 7
+[24-Nov-2016 00:02:11 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 58
+[24-Nov-2016 00:02:11 America/Denver] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 59
+[24-Nov-2016 00:02:18 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 00:02:18 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 00:02:18 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 00:02:18 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 7
+[24-Nov-2016 00:02:18 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 58
+[24-Nov-2016 00:02:18 America/Denver] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 59
+[24-Nov-2016 00:02:59 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 00:02:59 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 00:02:59 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 00:02:59 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 7
+[24-Nov-2016 00:02:59 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 58
+[24-Nov-2016 00:02:59 America/Denver] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 59
+[24-Nov-2016 00:04:17 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 00:04:17 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 00:04:17 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 00:04:17 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 7
+[24-Nov-2016 00:04:17 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 58
+[24-Nov-2016 00:04:17 America/Denver] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 59
+[24-Nov-2016 00:15:20 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 00:15:20 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 00:15:20 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 00:15:20 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 7
+[24-Nov-2016 00:15:20 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 58
+[24-Nov-2016 00:15:20 America/Denver] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 59
+[24-Nov-2016 00:15:25 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 00:15:25 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 00:15:25 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 00:15:25 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 7
+[24-Nov-2016 00:15:25 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 58
+[24-Nov-2016 00:15:25 America/Denver] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home2/cyberxau/public_html/demos/app4u-app/webservice/model.php on line 59
+[24-Nov-2016 01:49:46 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 01:49:46 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 01:49:46 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 01:49:46 America/Denver] PHP Notice:  Undefined index: username in /home2/cyberxau/public_html/demos/app4u-app/webservice/controller.php on line 129
+[24-Nov-2016 01:49:46 America/Denver] PHP Notice:  Undefined index: password in /home2/cyberxau/public_html/demos/app4u-app/webservice/controller.php on line 130
+[24-Nov-2016 01:50:29 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 01:50:29 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 01:50:29 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 01:51:12 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 01:51:12 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 01:51:12 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:20:57 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:20:57 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:20:57 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:21:10 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:21:10 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:21:10 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:27:37 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:27:37 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:27:37 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:27:50 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:27:50 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:27:50 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:27:59 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:27:59 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:27:59 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:28:44 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:28:44 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:28:44 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:31:38 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:31:38 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:31:38 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:32:56 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:32:56 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:32:56 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:33:16 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:33:16 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:33:16 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:33:20 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 4
+[24-Nov-2016 02:33:20 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 14
+[24-Nov-2016 02:33:20 America/Denver] PHP Notice:  Trying to get property of non-object in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 18
+[24-Nov-2016 02:33:20 America/Denver] PHP Notice:  Undefined property: stdClass::$Email in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 28
+[24-Nov-2016 02:33:20 America/Denver] PHP Notice:  Undefined property: stdClass::$User_Name in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 30
+[24-Nov-2016 02:33:20 America/Denver] PHP Notice:  Undefined property: stdClass::$Password in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 30
+[24-Nov-2016 02:35:35 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:35:35 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:35:35 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:35:36 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 4
+[24-Nov-2016 02:35:36 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 14
+[24-Nov-2016 02:35:36 America/Denver] PHP Notice:  Trying to get property of non-object in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 18
+[24-Nov-2016 02:35:36 America/Denver] PHP Notice:  Undefined property: stdClass::$Email in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 28
+[24-Nov-2016 02:35:36 America/Denver] PHP Notice:  Undefined property: stdClass::$User_Name in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 30
+[24-Nov-2016 02:35:36 America/Denver] PHP Notice:  Undefined property: stdClass::$Password in /home2/cyberxau/public_html/demos/app4u-app/webservice/forget-passwrd.php on line 30
+[24-Nov-2016 02:36:38 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:36:38 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:36:38 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:36:48 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:36:48 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:36:48 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:37:07 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:37:07 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:37:07 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[24-Nov-2016 02:57:36 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[24-Nov-2016 02:57:36 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[24-Nov-2016 02:57:36 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[25-Nov-2016 02:06:10 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[25-Nov-2016 02:06:10 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[25-Nov-2016 02:06:10 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[25-Nov-2016 02:06:31 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[25-Nov-2016 02:06:31 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[25-Nov-2016 02:06:31 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[05-Dec-2016 21:48:50 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[05-Dec-2016 21:48:50 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[05-Dec-2016 21:48:50 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[05-Dec-2016 21:50:55 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[05-Dec-2016 21:50:55 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[05-Dec-2016 21:50:55 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[07-Dec-2016 00:07:12 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[07-Dec-2016 00:07:12 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[07-Dec-2016 00:07:12 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[07-Dec-2016 00:07:23 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[07-Dec-2016 00:07:23 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[07-Dec-2016 00:07:23 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[07-Dec-2016 00:10:13 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[07-Dec-2016 00:10:13 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[07-Dec-2016 00:10:13 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[07-Dec-2016 00:10:26 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[07-Dec-2016 00:10:26 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[07-Dec-2016 00:10:26 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[07-Dec-2016 00:12:34 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[07-Dec-2016 00:12:34 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[07-Dec-2016 00:12:34 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0
+[07-Dec-2016 00:27:31 America/Denver] PHP Warning:  Module 'http' already loaded in Unknown on line 0
+[07-Dec-2016 00:27:31 America/Denver] PHP Warning:  Module 'mailparse' already loaded in Unknown on line 0
+[07-Dec-2016 00:27:31 America/Denver] PHP Warning:  Module 'uploadprogress' already loaded in Unknown on line 0

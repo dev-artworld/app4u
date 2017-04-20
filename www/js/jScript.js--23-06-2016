@@ -1,0 +1,1013 @@
+Date.prototype.addDays = function(days){
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+}
+
+function create(){
+	
+	if(validateForm()){
+		var DataObj=new Object();
+		var data=jQuery("form[name='signup']").serializeArray();
+		console.log(data);		
+		for(var i in data){
+			DataObj[data[i].name]=data[i].value;
+		}
+		jQuery.ajax({
+			url:"http://artworldwebsolutions.com/service-notifications/webservice/webservices.php?action=register",
+			type:"POST",
+			data:DataObj,
+			async:true,
+			beforeSend:function(){
+				myApp.showIndicator()
+				
+			},
+			success:function(res){
+				var data = JSON.parse(res);
+				//nsole.log(res);
+				var sucess = data.results.Success;
+				console.log(data.results.Success);
+				if(sucess != "" ){
+				//	localStorage.setItem("uid",data.response);
+					myApp.alert("account created successfully!");
+					//mainView.router.reloadPage("home.html")
+					//mainView.router.reloadPage("index.html");
+					window.location.href="index.html";
+				}
+				
+			},
+			complete:function(){
+				myApp.hideIndicator()
+			}
+		});
+	}
+}
+
+function register_company(){
+	
+	var DataObj=new Object();
+	var data=jQuery("form[name='signup']").serializeArray();
+	console.log(data);		
+	for(var i in data){
+		DataObj[data[i].name]=data[i].value;
+	}
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/webservices.php?action=company_register",
+		type:"POST",
+		data:DataObj,
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator()
+			
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(data);
+			if(!data.error){
+				myApp.alert("Account created successfully!",function(){
+
+				});
+			}else{
+				myApp.alert(data.response);
+			}		
+		},
+		complete:function(){
+			myApp.hideIndicator()
+		}
+	});
+}
+
+function login(){
+	
+	var username = document.getElementsByName("username")[0].value;
+	var password = document.getElementsByName("password")[0].value;
+	
+	if(username==""){
+		myApp.alert("please enter username");
+		return false;
+	}
+	if(password==""){
+		myApp.alert("please enter password");
+		return false;
+	}
+	
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/webservices.php",
+		type:"POST",
+		data:{"action":'login',"username":username,"password":password},
+		async:true,
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(data);
+			if(!data.results.error){
+				localStorage.setItem("User_Id",data.results.User_Id);
+				if(data.results.UserType=="provider"){
+					mainView.router.loadPage("company_dashboard.html");
+				}else{
+					mainView.router.loadPage("dashboard.html");
+				}
+			}else{
+				myApp.alert("Wrong Username And Password");
+			}
+			
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function forgot_pass(){
+	
+	var email = document.getElementsByName("email")[0].value;
+	
+	
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/forget-passwrd.php",
+		type:"POST",
+		data:{"email":email},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(res);
+			console.log(data);
+			//console.log(data.results.error);
+			if(data.results == undefined || data.results == null || data.results.length == 0){
+				myApp.alert("Please Enter Email Id.");
+				
+			}
+			else
+			{
+				myApp.alert("Password is sent to your mail.");
+				//localStorage.setItem("User_Id",data.response);
+				//mainView.router.reloadPage("home.html")
+				window.location.href="index.html";
+			}
+			
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function searchService(){
+	//alert("sercive");
+            var service = document.getElementsByName("service")[0].value;
+            var state = document.getElementsByName("state")[0].value;
+            var city = document.getElementsByName("city")[0].value;
+            var frequency = document.getElementsByName("frequency")[0].value;
+            localStorage.setItem("service",service);
+            localStorage.setItem("state",state);
+            localStorage.setItem("city",city);
+            localStorage.setItem("frequency",frequency);
+            mainView.router.loadPage("services-provider-list.html");
+        }
+
+function emailExist(){
+	var emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	var email = document.getElementsByName("Email")[0].value;
+	if(!email.match(emailPattern)){
+		myApp.alert("please enter a valid email");
+		return false;
+	}
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/emailexist.php",
+		type:"POST",
+		data:{"email":email},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			if(!data.results.error){
+				console.log(data);
+				//localStorage.setItem('emailExist',1);
+				myApp.alert("this email is already register with us");
+			}else{
+				localStorage.setItem('emailExist',email);
+			}
+			
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function logout(){
+	localStorage.clear();
+	mainView.router.reloadPage("index.html");
+	myApp.alert("you are logged out!");
+}
+
+
+function confirm_username(){
+
+	
+	var username = document.getElementById("username").value;
+	//console.log(username);
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/userexist.php",
+		type:"POST",
+		data:{"username":username},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(data);
+			if(!data.results.error){
+				console.log(data);
+				//localStorage.setItem('emailExist',1);
+				myApp.alert("this username is already register with us");
+			}else{
+				localStorage.setItem('userExist',username);
+			}	
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function confirm_password(){
+
+	var password = localStorage.getItem('password');
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/passwordexist.php",
+		type:"POST",
+		data:{"password":password},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(data);
+			if(!data.results.error){
+				return true;
+			}else{
+				return false;
+			}	
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+
+
+
+
+function validPwd()
+{
+	var password 	= document.getElementsByName("password")[0].value;
+	var cpassword 	= document.getElementsByName("confirm_password")[0].value;
+	if(password==""){
+		myApp.alert("please enter new password");
+		return false;
+	}
+	if(cpassword==""){
+		myApp.alert("please enter confirm password");
+		return false;
+	}
+	if(password!=cpassword){
+		myApp.alert("password doesn't match");
+		return false;
+	}	
+	return true;
+}
+
+function validateForm(){
+	//alert("form");
+	var phonePattern =/^\d{10}$/;
+	var emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	
+	var username 		= document.getElementById("username").value;
+//console.log(username);
+	var password 		= document.getElementById("password").value;
+	var Company_Name 		= document.getElementById("Company_Name").value;
+
+	var Service_Type 		= document.getElementById("Service_Type").value;
+	var State 	= document.getElementById("State").value;
+	var Street_Address 	= document.getElementById("Street_Address").value;
+	
+	
+	/*var city 		= document.getElementsByName("city")[0].value;
+	var state 		= document.getElementsByName("state")[0].value;*/
+
+	var Contact_Number 		= document.getElementById("Contact_Number").value;
+	var Email 	= document.getElementById("Email").value;
+	//var emailcheck  = localStorage.getItem('emailExist');
+	if(username == ""){
+		myApp.alert("Please enter username");		
+		return false;
+	}
+	if(password == ""){
+		myApp.alert("Please enter Password!");
+		return false;
+	}
+	if(Company_Name == ""){
+		myApp.alert("Please enter Company Name!");
+		return false;
+	}
+	if(!Email.match(emailPattern)){
+		myApp.alert("please Enter a valid email address");
+		return false;
+	}
+	if(Service_Type == ""){
+		myApp.alert("please enter Service Type");
+		return false;
+	}
+	if(State == ""){
+		myApp.alert("please enter your State");
+		return false;
+	}
+	
+	if(Street_Address == ""){
+		myApp.alert("please enter address");
+		return false;
+	}
+	/*if(city == ""){
+		myApp.alert("please enter city");
+		return false;
+	}
+	if(state == ""){
+		myApp.alert("please enter state");
+		return false;
+	}*/
+	if(!Contact_Number.match(phonePattern)){
+		myApp.alert("please enter a valid mobile number");
+		return false;
+	}
+	if(parseInt(Email)){
+		myApp.alert("this email is already register with us");
+		return false;
+	}
+	return true;
+}
+
+function selectCity()
+{
+  
+  var state=document.getElementById("state").value;
+  
+    jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/city.php",
+      type:"POST",
+      data:{"state":state},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        if(!data.results.error){
+          var result = data.results;
+          
+          console.log(result);
+          
+          var html='';
+          for(var i=0;i<result.length;i++){
+             //var receipt = result[i].receipt_id;
+            localStorage.setItem("city",result[i].city);
+             //console.log(result[i].image);
+            html+='<option value="'+result[i].city+'">'+result[i].city+'</option>';
+
+          }
+          jQuery("#city").html(html);
+        }
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+  
+}
+
+function selectState()
+{
+	var user_id = localStorage.getItem("User_Id");
+      jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/state.php",
+      type:"POST",
+      data:{"userid":user_id},
+      async:true,
+      beforeSend:function(){
+        //myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        console.log(data);
+        if(!data.results.error){
+          var result = data.results;
+          
+          console.log(result);
+          
+          var html='';
+          for(var i=0;i<result.length;i++){
+             //var receipt = result[i].receipt_id;
+             //console.log(result[i].image);
+             localStorage.setItem("state",result[i].state);
+            html+='<option value="'+result[i].state_code+'">'+result[i].state+'</option>';
+          }
+          jQuery("#state").html(html);
+        }
+      },
+      complete:function(){
+        //myApp.hideIndicator();
+      }
+    });
+}
+
+function providerDetail(pid,sid){
+	localStorage.setItem("pid",pid);
+	localStorage.setItem("sid",sid);
+	mainView.router.loadPage("service-provider-detail.html");
+}
+//var feildName = "";
+function showPromptC(val,name){
+	myApp.prompt(val,name,promptDoneC);
+	//feildName = name;
+}
+
+function showPromptA(val,name){
+	myApp.prompt(val,name,promptDoneA);
+	//feildName = name;
+}
+
+function showPromptCI(val,name){
+	myApp.prompt(val,name,promptDoneCI);
+	//feildName = name;
+}
+
+function showPromptS(val,name){
+	myApp.prompt(val,name,promptDoneS);
+	//feildName = name;
+}
+
+function showPromptM(val,name){
+	myApp.prompt(val,name,promptDoneM);
+	//feildName = name;
+}
+
+function showPromptU(val,name){
+	myApp.prompt(val,name,promptDoneU);
+	//feildName = name;
+}
+
+function showPromptP(val,name){
+	myApp.prompt("******",name,promptDoneP);
+	//feildName = name;
+}
+
+function showPromptCP(val,name){
+	myApp.prompt("******",name,promptDoneCP);
+	//feildName = name;
+}
+
+function showPromptE(val,name){
+	myApp.prompt(val,name,promptDoneE);
+	//feildName = name;
+}
+
+function promptDoneC(value){
+
+	var user_id = localStorage.getItem("User_Id");
+    jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/update-profile.php",
+      type:"POST",
+      data:{"action":"company","userid":user_id,"companyname":value},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        var html="";
+        if(data.results == undefined || data.results == null || data.results.length == 0){
+        	myApp.alert("Please Enter Company Name.");
+          
+        }
+        else
+        {
+        	var result = data.results;
+          
+          console.log(result);
+          mainView.router.reloadPage("setting.html");
+          
+        }
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+	
+}
+
+function promptDoneA(value){
+
+	var user_id = localStorage.getItem("User_Id");
+    jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/update-profile.php",
+      type:"POST",
+      data:{"action":"address","userid":user_id,"address":value},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        var html="";
+        if(data.results == undefined || data.results == null || data.results.length == 0){
+        	myApp.alert("Please Enter Address.");
+          
+        }
+        else
+        {
+        	var result = data.results;
+          
+          console.log(result);
+          mainView.router.reloadPage("setting.html");
+          
+        }
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+	
+}
+
+function promptDoneCI(value){
+
+	var user_id = localStorage.getItem("User_Id");
+    jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/update-profile.php",
+      type:"POST",
+      data:{"action":"city","userid":user_id,"city":value},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        var html="";
+        if(data.results == undefined || data.results == null || data.results.length == 0){
+        	myApp.alert("Please Enter City.");
+          
+        }
+        else
+        {
+        	var result = data.results;
+          
+          console.log(result);
+          mainView.router.reloadPage("setting.html");
+          
+        }
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+	
+}
+
+function promptDoneS(value){
+
+	var user_id = localStorage.getItem("User_Id");
+    jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/update-profile.php",
+      type:"POST",
+      data:{"action":"state","userid":user_id,"state":value},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        var html="";
+        if(data.results == undefined || data.results == null || data.results.length == 0){
+        	myApp.alert("Please Enter State.");
+          
+        }
+        else
+        {
+        	var result = data.results;
+          
+          console.log(result);
+          mainView.router.reloadPage("setting.html");
+          
+        }
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+	
+}
+
+function promptDoneM(value){
+
+	var user_id = localStorage.getItem("User_Id");
+    jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/update-profile.php",
+      type:"POST",
+      data:{"action":"mobile","userid":user_id,"mobile":value},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        var html="";
+        if(data.results == undefined || data.results == null || data.results.length == 0){
+        	myApp.alert("Please Enter Contact No.");
+          
+        }
+        else
+        {
+        	var result = data.results;
+          
+          console.log(result);
+          mainView.router.reloadPage("setting.html");
+          
+        }
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+	
+}
+
+function promptDoneU(value){
+
+	var user_id = localStorage.getItem("User_Id");
+    jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/update-profile.php",
+      type:"POST",
+      data:{"action":"username","userid":user_id,"username":value},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        var html="";
+        if(data.results == undefined || data.results == null || data.results.length == 0){
+        	myApp.alert("Please Enter Username.");
+          
+        }
+        else
+        {
+        	var result = data.results;
+          
+          console.log(result);
+          mainView.router.reloadPage("setting.html");
+          
+        }
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+	
+}
+
+function promptDoneP(password12){
+	localStorage.setItem("password",password12);
+}
+
+
+function promptDoneCP(password){
+
+	var pass = localStorage.getItem("password");
+	if(pass == password)
+	{
+	var user_id = localStorage.getItem("User_Id");
+    jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/update-profile.php",
+      type:"POST",
+      data:{"action":"password","userid":user_id,"password":password},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        var html="";
+        if(data.results == undefined || data.results == null || data.results.length == 0){
+        	myApp.alert("Please Enter Password.");
+          
+        }
+        else
+        {
+        	var result = data.results;
+          
+          console.log(result);
+          mainView.router.reloadPage("setting.html");
+          
+        }
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+}
+else
+{
+	myApp.alert("Password Doesn't Match");
+}
+	
+}
+
+function promptDoneE(value){
+
+	var user_id = localStorage.getItem("User_Id");
+    jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/update-profile.php",
+      type:"POST",
+      data:{"action":"email","userid":user_id,"email":value},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        var html="";
+        if(data.results == undefined || data.results == null || data.results.length == 0){
+        	myApp.alert("Please Enter Email Id.");
+          
+        }
+        else
+        {
+        	var result = data.results;
+          
+          console.log(result);
+          mainView.router.reloadPage("setting.html");
+          
+        }
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+	
+}
+
+function backButton()
+{
+	var service = localStorage.getItem("service");
+	console.log(service);
+    if(service == null)
+    	{ mainView.router.reloadPage("dashboard.html"); }
+    else 
+	{ mainView.router.reloadPage("services-provider-list.html"); }
+}
+
+function deleteProviderService(sid){
+	
+	var pid = localStorage.getItem("User_Id");
+	jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/webservices.php",
+      type:"POST",
+      data:{"action":"delete-service","sid":sid,"pid":pid},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        if(!data.error){
+        	myApp.alert(data.response);
+        }
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+}
+
+function editServiceTable(obj){
+	jQuery(obj).attr("onclick","cancelServiceTable(this)").html("cancel");
+	jQuery(".price-table-row tbody tr").each(function(){
+		var f_name = jQuery(this).find("td").eq(0).html();
+		var s_price = jQuery(this).find("td").eq(1).html();
+		jQuery(this).find("td").eq(0).html('<input type="text" value="'+f_name+'" />');
+		jQuery(this).find("td").eq(1).html('<input type="text" value="'+s_price+'" /><a onclick="updateServiceDetails(this)" style="margin-left:15px" href="#"><i class="fa fa-retweet"> update</i></a>');
+	});
+}
+
+function cancelServiceTable(obj){
+	jQuery(obj).attr("onclick","editServiceTable(this)").html("edit");
+	jQuery(".price-table-row tbody tr").each(function(){
+		var f_name = jQuery(this).find("td input").eq(0).val();
+		var s_price = jQuery(this).find("td input").eq(1).val();
+		jQuery(this).find("td").eq(0).html(f_name);
+		jQuery(this).find("td").eq(1).html(s_price);
+	});
+}
+
+function updateServiceDetails(obj){
+	var fid = jQuery(obj).parent().parent().attr('fid');
+	var pid = jQuery(obj).parent().parent().attr('pid');
+	var fval = jQuery(obj).parent().parent().find("td input").eq(0).val();
+	var pval = jQuery(obj).parent().parent().find("td input").eq(1).val().replace(/\D/g,'');
+	jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/webservices.php",
+      type:"POST",
+      data:{"action":"update-service-details","fid":fid,"fval":fval,"pid":pid,"pval":pval},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        console.log(data);
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+}
+
+function createDropZone($id){
+    var myDropzone = new Dropzone("." + $id, {
+        url: "http://artworldwebsolutions.com/service-notifications/webservice/upload.php",
+        acceptedFiles: "image/*",
+        paramName: "file",
+        success: function(file,response){
+        	var img_src="http://artworldwebsolutions.com/service-notifications/uploads/"+response;
+        	var html = '<div class="swiper-slide"><img src="'+img_src+'" width="100%" alt=""/></div>';
+        	jQuery(".swiper-wrapper").append(html);
+            $("#gallery-images").append('<input type="hidden" value="' + img_src + '" class="gallery-memory" />');
+        }
+    });
+}
+
+function LogoDropZone($id){
+    var myDropzone = new Dropzone("." + $id, {
+        url: "http://artworldwebsolutions.com/service-notifications/webservice/upload.php",
+        acceptedFiles: "image/*",
+        paramName: "file",
+        dictDefaultMessage:"Service Profile Logo",
+        success: function(file,response){
+        	var img_src="http://artworldwebsolutions.com/service-notifications/uploads/"+response;
+        	jQuery("input[name='p-logo']").val(img_src);
+        }
+    });
+}
+function validateService(){
+
+	var service = jQuery("select[name='service']").val();
+	var company = jQuery("input[name='company']").val();
+	var address = jQuery("input[name='address']").val();
+	var state = jQuery("select[name='state']").val();
+	var city = jQuery("select[name='city']").val();
+	var description= jQuery("input[name='description']").val();
+	var price1 = jQuery("input[name='price1']").val();
+	var price2 = jQuery("input[name='price2']").val();
+	var price3 = jQuery("input[name='price3']").val();
+	if(service==""){
+		myApp.alert("please select a service");
+		return false;
+	}
+	if(company==""){
+		myApp.alert("please enter Company name");
+		return false;
+	}
+	if(address==""){
+		myApp.alert("please enter address");
+		return false;
+	}
+	if(state==""){
+		myApp.alert("please select state");
+		return false;
+	}
+	if(city==""){
+		myApp.alert("please select city");
+		return false;
+	}
+	if(description==""){
+		myApp.alert("please enter service description");
+		return false;
+	}
+	if(price1==""){
+		myApp.alert("please enter Monthly price");
+		return false;
+	}
+	if(price2==""){
+		myApp.alert("please enter 3 Month price");
+		return false;
+	}
+	if(price3==""){
+		myApp.alert("please enter 6 Month price");
+		return false;
+	}
+	return true;
+}
+
+function add_service(){
+	var data = new Object();
+	var gallery = new Array();
+	data['service_logo'] = jQuery("input[name='p-logo']").val()
+	data['service'] = jQuery("select[name='service']").val();
+	data['company'] = jQuery("input[name='company']").val();
+	data['state'] = jQuery("select[name='state']").val();
+	data['city'] = jQuery("select[name='city']").val();
+	data['address'] = jQuery("input[name='address']").val();
+	data['description'] = jQuery("input[name='description']").val();
+	data['price1'] = jQuery("input[name='price1']").val();
+	data['price2'] = jQuery("input[name='price2']").val();
+	data['price3'] = jQuery("input[name='price3']").val();
+	jQuery(".gallery-memory").each(function(){
+		gallery.push(jQuery(this).val());
+	})
+	data['gallery']=gallery;
+	data['action']="add-service";
+	data['uid']=localStorage.getItem('User_Id');
+
+	if(validateService()){
+		jQuery.ajax({
+	      url:"http://artworldwebsolutions.com/service-notifications/webservice/webservices.php",
+	      type:"POST",
+	      data:data,
+	      async:true,
+	      beforeSend:function(){
+	        myApp.showIndicator();
+	      },
+	      success:function(res){
+	        var data = JSON.parse(res);
+	        if(!data.error){
+	        	myApp.alert(data.response);
+	        }
+	      },
+	      complete:function(){
+	        myApp.hideIndicator();
+	      }
+	    });
+	}
+}
+
+function getCity(state){
+	jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/city.php",
+      type:"POST",
+      data:{"state":state},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        var html='<option value="">select city</option>';
+        if(!data.results.error){
+          var result = data.results;
+          for(var i=0;i<result.length;i++){
+            html+='<option value="'+result[i].city+'">'+result[i].city+'</option>';
+          }
+          jQuery("select[name='city'").html(html);
+        }
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+}
+
+function subscribeService(obj){
+
+	var fid = jQuery(obj).parent().parent().attr("fid");
+	var psid = jQuery(obj).parent().parent().attr("psid");
+	var uid = localStorage.getItem("User_Id");
+	var date = new Date();
+	var sdate = date.addDays(30);
+	var sdate = sdate.getFullYear()+"-"+(parseInt(sdate.getMonth())+1)+"-"+sdate.getDate();
+	var edate = date.addDays(60);
+	var edate = edate.getFullYear()+"-"+(parseInt(edate.getMonth())+1)+"-"+edate.getDate();
+	
+	jQuery.ajax({
+      url:"http://artworldwebsolutions.com/service-notifications/webservice/webservices.php",
+      type:"POST",
+      data:{"action":"subscribe-service","uid":uid,"fid":fid,"psid":psid,"sdate":sdate,"edate":edate},
+      async:true,
+      beforeSend:function(){
+        myApp.showIndicator();
+      },
+      success:function(res){
+        var data = JSON.parse(res);
+        console.log(data);
+      },
+      complete:function(){
+        myApp.hideIndicator();
+      }
+    });
+}

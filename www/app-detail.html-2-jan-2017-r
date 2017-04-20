@@ -1,0 +1,344 @@
+<script>
+{
+"template":"app-detail.html",
+ "events":{"afterLoadTemplate":function(){
+    //alert("hiiii");
+  var app_id = localStorage.getItem("app_id");
+
+  jQuery.ajax({
+    //url:"http://apps4u.myworkspacefiles.com/?source=app&action=single_app&ID=1039",
+    url:"http://apps4u.myworkspacefiles.com/?source=app&action=single_app",
+    data: {"ID":app_id},
+    type:"GET",
+    async:true,
+    beforeSend:function(){
+     myApp.showIndicator();
+    },
+    success:function(res){
+
+        var data             =   JSON.parse( res );
+        var app_title        =   data[0].app_title;
+        var app_category     =   data[0].app_category;
+        var category_id      =   data[0].category_id;
+        var app_content      =   data[0].app_content;
+        var add_subcategory  =   data[0].add_subcategory;
+        var apple_link       =   data[0].apple_link;
+        var google_link      =   data[0].google_link;
+        var image            =   data[0].Image;
+        var section          =   data[0].section;
+        var video_url        =   data[0].video_url;
+        var featured_ap      =   data[0].featured_ap;
+        var price            =   data[0].price;
+        var featured_image   =   data[0].Featured_Image;
+        var review           =   data[0].Review;
+        var post_modified    =   data[0].post_modified;
+        var additional_size  =   data[0].additional_size;
+        var additional_installs = data[0].additional_installs;
+        var additional_current_version = data[0].additional_current_version;
+        var additional_requires_android = data[0].additional_requires_android;
+        var additional_content_rating = data[0].additional_content_rating;
+        var additional_interactive_elements = data[0].additional_interactive_elements;
+        var additional_in_app_products = data[0].additional_in_app_products;
+        var additional_permissions = data[0].additional_permissions;
+        var additional_report = data[0].additional_report;
+        var additional_offered_by = data[0].additional_offered_by;
+        var display_name = data[0].display_name;
+        var user_url = data[0].user_url;
+
+
+        jQuery("#app_price.app-price-row").html(price);
+         jQuery("#user_info.app-name-row").html('<span>Developer</span>'+display_name+'<span>'+user_url+'</span>');
+        jQuery("#category_name").html(app_category);
+        jQuery("#postmod").html('<strong>Updated</strong>'+post_modified);
+        jQuery("#currentVersion").html('<strong>Current Version</strong>'+additional_current_version);
+        jQuery("#Interactive").html('<strong>Interactive Elements</strong>'+additional_interactive_elements);
+        jQuery("#report").html('<strong>Report</strong>'+additional_report);
+        jQuery("#size").html('<strong>Size</strong>'+additional_size);
+        jQuery("#requires").html('<strong>Requires Android</strong>'+additional_requires_android);
+        jQuery("#products").html('<strong>In-app Products</strong>'+additional_in_app_products);
+        jQuery("#offered").html('<strong>Offered By</strong>'+additional_offered_by); 
+        jQuery("#install").html('<strong>Installs</strong>'+additional_installs);
+        jQuery("#contentrate").html('<strong>Content Rating</strong>'+additional_content_rating);
+        jQuery("#permission").html('<strong>Permissions</strong>'+additional_permissions);
+        jQuery("#appcontent.app-detail-top-e").html('<div class="title-row">App detail</div>'+app_content);
+        jQuery("#app_detail_page .app-title").text(app_title);
+        if(video_url){
+           jQuery("#app_detail_page .video-img").find("object").attr("data",video_url);
+        } else {
+            jQuery("#app_detail_page .video-img").html('<img src="img/app-video-img.jpg" alt=""/>');
+        }
+        jQuery("#app_detail_page .app-img").find("img").attr("src",featured_image);
+        jQuery("#app_detail_page .testimonial-row").find(".row-1").find(".right-col").find("i").css("color","#999");
+        var html = "";
+        var rating = 0;
+        var image_html = "";
+        for (i = 0; i < review.length; i++) {
+                
+                html += '<div class="swiper-slide" style="width:50%;">';
+                html +=     '<div class="testimonial-row">';
+                html +=         '<div class="row-1">';
+                html +=             '<div class="left-col">'+review[i].review_name+'</div>';
+                html +=             '<div class="right-col">';
+                html +=                 '<i class="fa fa-star" aria-hidden="true"></i>';
+                html +=                 '<i class="fa fa-star" aria-hidden="true"></i>';
+                html +=                 '<i class="fa fa-star" aria-hidden="true"></i>';
+                html +=                 '<i class="fa fa-star" aria-hidden="true"></i>';
+                html +=                 '<i class="fa fa-star" aria-hidden="true"></i>';
+                html +=             '</div>';
+                html +=             '<div class="clear"></div>';
+                html +=         '</div>';
+                html +=         '<div class="row-2">'+review[i].post_content+'</div>';
+                html +=     '</div>';
+                html += '</div>';
+
+                rating += parseInt(review[i].review_rating);
+                //ratingss = parseInt(review[i].review_rating);
+
+        }
+
+        if(data[0].Image.length > 0 || data[0].Image != null){
+
+            for(var images = 0; images < data[0].Image.length; images++)
+            {
+               image_html += '<div class="swiper-slide">'; 
+                    image_html += '<img src="'+data[0].Image[images]+'"" width="100%" height="auto" alt=""/>';
+               image_html += '</div>'; 
+            }
+            //alert(image_html);
+            jQuery("#app_detail_page .app-detail-top-c").find(".swiper-wrapper").html(image_html);
+
+        }
+
+        averageRating = rating/review.length;
+        averageRating = parseFloat(Math.round(averageRating * 100) / 100).toFixed(1);
+        jQuery("#app_detail_page .app-detail-top-h").find(".swiper-wrapper").append(html);
+
+        jQuery("#app_detail_page .app-detail-top-g").find(".row-2").find("strong").text(review.length+" total review");
+        jQuery("#app_detail_page .app-detail-top-g").find(".row-2").find(".col-2").find("span").text(averageRating);
+
+        jQuery("#app_detail_page #reviewApp").find(".row-2").find("strong").text(review.length+" total review");
+        jQuery("#app_detail_page #reviewApp").find(".row-2").find(".col-2").find("span").text(averageRating);
+
+        console.log(averageRating);
+        
+        getrelatedApps(category_id);
+        
+    },
+    complete:function(){
+        myApp.hideIndicator();
+        jQuery("#app_detail_page .app-detail-top-c").find('.swiper-container')[0].swiper.update();
+        jQuery("#app_detail_page .app-detail-top-h").find('.swiper-container')[0].swiper.update();
+    }
+  });
+
+    }
+  }
+}
+</script>
+<!--header-->
+<!--/header-->
+
+<div id="app_detail_page" data-page="app-detail" class="page">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+      <div class="center">Going Viral</div>
+      <div class="right"><a href="#" class="open-panel link icon-only"><i class="fa fa-search" aria-hidden="true"></i></a><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+    </div>
+  </div>
+  
+  <div class="toolbar toolbar-bottom">
+    <div class="toolbar-inner">
+    	<div class="footer-nav">
+        	<a href="home.html" class="link link-1"><i class="fa fa-plus" aria-hidden="true"></i><span>Last Week New Apps</span></a>
+            <a href="home.html" class="link link-2"><i class="fa fa-star" aria-hidden="true"></i><span>Top App Picks</span></a>
+            <a href="home.html" class="link link-3"><i class="fa fa-check" aria-hidden="true"></i><span>Most Downloads</span></a>
+            <a href="home.html" class="link link-4"><i class="fa fa-dashboard" aria-hidden="true"></i><span>Coming On Fast</span></a>
+            <a href="home.html" class="link link-5"><i class="fa fa-heart" aria-hidden="true"></i><span>Most Unique</span></a>
+        </div>
+    </div>
+  </div>
+  
+  <div class="page-content">
+  	<!--app-detail-wrapper-->
+    <div class="app-detail-wrapper">
+    	<div class="app-detail-top-a">
+        	<div class="left-col">
+            	<div class="col-1">
+                	<div class="app-img">
+                        <!--<img src="img/featured-app-img.png" alt=""/>-->
+                        <img src="" alt=""/>
+                    </div>
+                </div>
+                <div class="col-2">
+                	<div class="app-name-row app-title"></div>
+                    <div class="app-name-row"></div>
+                    <div class="everyone-row"><img src="img/everyone-img.png" alt=""/></div>
+                    <div class="share-btn"><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> Share</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="reviewApp" class="right-col">
+            	<div class="app-rating-row">
+                <div id="reviewApps" class="row-2">
+                    <div class="stars">
+						<input type="radio" name="star" class="star-1" id="star-1" value="1" />
+						<label class="star-1" for="star-1">1</label>
+						<input type="radio" name="star" class="star-2" id="star-2" value="2" />
+						<label class="star-2" for="star-2">2</label>
+						<input type="radio" name="star" class="star-3" id="star-3" value="3" />
+						<label class="star-3" for="star-3">3</label>
+						<input type="radio" name="star" class="star-4" id="star-4" value="4" />
+						<label class="star-4" for="star-4">4</label>
+						<input type="radio" name="star" class="star-5" id="star-5" value="5" />
+						<label class="star-5" for="star-5">5</label>
+						<span></span>
+					</div>
+                    <div class="col-2"><span></span> Average Rating</div>
+                    <div class="clear"></div>
+                </div>
+                <span id="category_name">Business</span></div>
+             <div id ="app_price" class="app-price-row">$1.29</div>
+              <div class="buy-app-row"><a href="#">Buy App <i class="fa fa-angle-down" aria-hidden="true"></i></a></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="app-detail-top-b">
+        	<div class="video-img">
+                <!--<img src="img/app-video-img.jpg" alt=""/>-->
+                <object data=""></object>
+            </div>
+        </div>
+        <div class="app-detail-top-c">
+        	<div data-pagination=".swiper-pagination-c3" data-space-between="10" data-slides-per-view="3" class="swiper-container swiper-init ks-carousel-slider">
+            <div class="swiper-pagination swiper-pagination-c3"></div>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+   	    	    	<img src="img/app-slider-img1.jpg" alt=""/> 
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/app-slider-img2.jpg" alt=""/> 
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/app-slider-img3.jpg" alt=""/> 
+                </div>
+                <div class="swiper-slide">
+   	    	    	<img src="img/app-slider-img1.jpg" alt=""/> 
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/app-slider-img2.jpg" alt=""/> 
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/app-slider-img3.jpg" alt=""/> 
+                </div>
+              </div>
+            </div>
+        </div>
+        <!---->
+        <div class="app-detail-top-d">
+        	<div class="left-col">
+            	<div class="app-img">
+                    <!--<img src="img/featured-app-img.png" alt=""/>-->
+                    <img src="" alt=""/>
+                </div>
+            </div>
+            <div class="right-col">
+            	<div id="user_info" class="app-name-row"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="more-apps-row">
+                <div class="row-1">More Apps By Polaris Office Corp</div>
+                <div class="row-2">
+                    <a href="#"><img src="img/more-app-img1.png" alt=""/></a>
+                    <a href="#"><img src="img/more-app-img2.png" alt=""/></a>
+                    <a href="#"><img src="img/more-app-img3.png" alt=""/></a>
+                    <a href="#"><img src="img/more-app-img4.png" alt=""/></a>
+                </div>
+            </div>
+        </div>
+        <!---->
+        <div id="appcontent" class="app-detail-top-e">
+        	<div class="title-row">App detail</div>
+          <!--   <ul> 
+            	<li>Best mobile office software, choosen by 36 million users worldwide.</li>
+                <li>Powerfully compatible with Microsoft Office, with faster document loading.</li>
+                <li>With Polaris office, continue to work free on your document from smartphone, tablet and PC.</li>
+                <li>View or edit your documents anytime, anywhere with Polaris Office.</li>
+                <li>Continue your work on your smartphone, tablet, and PC.</li>
+                <li>View or edit MS office documents.</li>
+                <li>Manage documents in various cloud storage services with Polaris Office</li>
+            </ul> -->
+        </div>
+        <!---->
+        <!---->
+        <div class="app-detail-top-f">
+        	<div class="title-row">Additional Information</div>
+            <div class="content-row">
+            	<ul>
+                	<li>
+                    	<div id="postmod"><!--strong>Updated</strong --></div>
+                        <div id="currentVersion"><<!-- strong>Current Version</strong>7.2.1 --></div>
+                        <div id="Interactive"><!--<strong>Interactive Elements</strong>Users Interact, Digital Purchases --></div>
+                        <div id="report"><!--<strong>Report</strong>Flag as inappropriate --></div>
+                    </li>
+                    <li>
+                    	<div id="size"><!--<strong>Size</strong>48M --></div>
+                        <div id="requires"><!--<strong>Requires Android</strong>4.0 and up --></div>
+                        <div id="products"><!--<strong>In-app Products</strong>$0.99 - $59.99 per item --></div>
+                        <div id="offered"><!--<strong>Offered By</strong>Polaris Office Corp. --></div>
+                    </li>
+                    <li>
+                    	<div id="install"><!--<strong>Installs</strong>10,000,000 - 50,000,000 --></div>
+                        <div id="contentrate"><!--<strong>Content Rating</strong>Everyone --></div>
+                        <div id="permission"><!--<strong>Permissions</strong> --></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!---->
+        <div id="reviewsection" class="app-detail-top-g">
+        	<div class="left-col">
+            	<h3>Reviews</h3> 
+                <div class="row-2">
+                	<div class="stars">
+						<input type="radio" name="star" class="star-1" id="star-1" value="1" />
+						<label class="star-1" for="star-1">1</label>
+						<input type="radio" name="star" class="star-2" id="star-2" value="2" />
+						<label class="star-2" for="star-2">2</label>
+						<input type="radio" name="star" class="star-3" id="star-3" value="3" />
+						<label class="star-3" for="star-3">3</label>
+						<input type="radio" name="star" class="star-4" id="star-4" value="4" />
+						<label class="star-4" for="star-4">4</label>
+						<input type="radio" name="star" class="star-5" id="star-5" value="5" />
+						<label class="star-5" for="star-5">5</label>
+						<span></span>
+					</div>
+                    <div class="col-2"><span></span> Average Rating</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="right-col">
+            	<a href="write_review.html">Write A Review</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!---->
+        <div id ="detailapp" class="app-detail-top-h">
+        	<div data-pagination=".swiper-pagination-c2" data-space-between="15" data-slides-per-view="2" class="swiper-container swiper-init ks-carousel-slider">
+                <div class="swiper-wrapper"></div>
+            </div>
+        </div>
+        <!---->
+        <div class="app-detail-top-i">
+        	<div class="related-apps-wrapper">
+            	<h3>Related Apps</h3>
+            	<ul>
+                	
+                </ul>
+            </div>
+        </div>
+        <!---->
+    </div>
+    <!--END-->
+  </div>
+</div>

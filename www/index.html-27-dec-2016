@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#2196f3">
+    <title>Framework7 Material</title>
+    <link rel="stylesheet" href="css/framework7.material.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Roboto:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/material-icons.css">
+    <link rel="stylesheet" href="css/kitchen-sink.css">
+    
+    <link rel="stylesheet" href="css/template.css">
+    <link href="font-icons/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <link rel="icon" href="img/icon.png">
+  </head>
+  <body>
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <!--left panel
+    ======================================================================-->
+    <div class="panel panel-left panel-cover">
+      <div class="view navbar-fixed">
+        <div class="pages">
+          <div data-page="panel-left" class="page">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="center">Left Panel</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--END-->
+    
+   <div class="views">
+      <div class="view view-main">
+        <div class="pages navbar-fixed">
+          <div data-page="index" class="page">
+              <div class="navbar">
+                <div class="navbar-inner">
+                  <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                  <div class="center"><img class="logo" src="img/logo.png"></div>
+                  <div class="right">
+        					 <!--input type="text" name="appsearch" class="appsearch" id="appsearch"-->
+        					 <a href="appsearch.html" class="searchbox link icon-only" onclick="category_apps_search();">
+                   <i class="fa fa-search" aria-hidden="true"></i></a>
+        					 <a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a>
+                  </div>
+               </div>
+             </div>
+
+             <div class="page-content">
+               <div style="margin: 0;padding: 0;" class="content-block">
+                 <div class="row">
+                  <div id="grid1" class="col-100 tablet-50"><a href="new.html">NEW APPS</a></div>
+                  <div id="grid2" class="col-100 tablet-50"><a href="home.html">GOING VIRAL APPS</a></div>
+                  <div id="grid3" class="col-100 tablet-50"><a href="zombie.html">ZOMBIE APPS</a></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="js/jScript.js?var=111"></script>
+  <!--  <script type="text/javascript" src="js/cache.js"></script>-->
+    <script type="text/javascript" src="js/querystring-0.9.0.js"></script>
+   <!-- <script type="text/javascript" src="js/kitchen-sink.js"></script>-->
+    <script type="text/javascript" src="js/framework7.js"></script>
+    <script type="text/javascript" src="js/service-notifications.js"></script>
+    <script>
+    function category_apps_search(){
+			  var inputsearch,key;
+			  inputsearch = jQuery("#appsearch").val();
+			  localStorage.setItem(key, inputsearch);
+		}
+    function categorypage(categoryid){
+			  var currentcategory;
+			  localStorage.setItem(currentcategory, categoryid);
+		}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<script>
+{
+"template":"mostdownloads.html",
+ "events":{"afterLoadTemplate":function(){
+  jQuery.ajax({
+    url:"http://apps4u.myworkspacefiles.com/?source=app&action=mostdownloads",
+    
+    type:"GET",
+    async:true,
+    beforeSend:function(){
+     myApp.showIndicator();
+    },
+    success:function(res){
+        
+        var apps_html = "";
+        
+        var data =JSON.parse(res);
+       
+        for(var i=0;i<data.apps.length;i++)
+        {
+         
+           apps_html += '<li>';   
+           apps_html += '<div class="app-img"><a onclick="get_app_single_view('+data.apps[i].ID+')" href="javascript:void(0)"><img src="'+data.apps[i].featured_image+'"/></a></div>';
+           apps_html += '<div class="app-video-row"><a href="'+data.apps[i].video_url+'"><i class="fa fa-play-circle-o" aria-hidden="true"></i>Watch Demo</a></div>';
+           apps_html += '<div class="app-title">'+data.apps[i].post_title+'</div>';
+           apps_html += '<div class="rating-price-row">'
+           apps_html += '<div class="rating-col"><img data-rating="'+data.apps[i].review.review_rating+'" src="img/stars-rating-img.png" alt=""/></div>';
+           apps_html += '<div class="price-col">'+data.apps[i].price+'</div>';
+           apps_html += '<div class="clear"></div>';
+           apps_html += '</div>';
+           apps_html += '<div class="download-btn-row"><a href="#">Download <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>';
+           apps_html += '</li>';
+         }
+
+        
+        jQuery(".cat-apps-wrapper ul#apps_list").html(apps_html);
+
+    },
+    complete:function(){
+      myApp.hideIndicator();
+    }
+  });
+
+    }
+  }
+}
+</script>
+<!--header-->
+<!--/header-->
+
+
+<div id="mostdownloads_page" data-page="mostdownloads" class="page">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+      <div class="center">Most Downloads</div>
+      <div class="right"><a href="#" class="open-panel link icon-only"><i class="fa fa-search" aria-hidden="true"></i></a><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+    </div>
+  </div>
+  
+  <div class="toolbar toolbar-bottom">
+    <div class="toolbar-inner">
+      <div class="footer-nav">
+          <a href="newapps.html" class="link link-1"><i class="fa fa-plus" aria-hidden="true"></i><span>Last Week New Apps</span></a>
+            <a href="topapps.html" class="link link-2"><i class="fa fa-star" aria-hidden="true"></i><span>Top App Picks</span></a>
+            <a href="mostdownloads.html" class="link link-3"><i class="fa fa-check" aria-hidden="true"></i><span>Most Downloads</span></a>
+            <a href="comingonfast.html" class="link link-4"><i class="fa fa-dashboard" aria-hidden="true"></i><span>Coming On Fast</span></a>
+            <a href="mostunique.html" class="link link-5"><i class="fa fa-heart" aria-hidden="true"></i><span>Most Unique</span></a>
+        </div>
+    </div>
+  </div>
+  
+  <div class="page-content">
+    <!--App Category Page-->
+    <div class="app-category-page">
+      
+       <div class="maininner-wrapper">
+          <!--tabs content-->
+              <div class="tabs-swipeable-wrap">
+                <div class="tabs">
+                  <div id="business-cat" class="tab active">
+                    <!--cat apps wrapper-->
+                    <div class="cat-apps-wrapper">
+                        <ul id="apps_list">
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>    
+        </div>
+    </div>
+  </div>
+</div>

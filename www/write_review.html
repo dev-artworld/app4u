@@ -1,0 +1,124 @@
+<script>
+{
+"template":"write_review.html",
+ "events":{"afterLoadTemplate":function(){
+	
+    }
+  }
+}
+</script>
+<!--header-->
+<!--/header-->
+
+
+<div id="write_review_page" data-page="write_review" class="page">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+      <div class="center">Submit your review</div>
+      <div class="right"><a href="searchbar.html" class="link icon-only"><i class="fa fa-search" aria-hidden="true"></i></a><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+    </div>
+  </div>
+  
+  <div class="toolbar toolbar-bottom">
+    <div class="toolbar-inner">
+      <div class="footer-nav">
+          <a href="newapps.html" class="link link-1"><i class="fa fa-plus" aria-hidden="true"></i><span>Last Week New Apps</span></a>
+            <a href="topapps.html" class="link link-2"><i class="fa fa-star" aria-hidden="true"></i><span>Top App Picks</span></a>
+            <a href="mostdownloads.html" class="link link-3"><i class="fa fa-check" aria-hidden="true"></i><span>Most Downloads</span></a>
+            <a href="comingonfast.html" class="link link-4"><i class="fa fa-dashboard" aria-hidden="true"></i><span>Coming On Fast</span></a>
+            <a href="mostunique.html" class="link link-5"><i class="fa fa-heart" aria-hidden="true"></i><span>Most Unique</span></a>
+        </div>
+    </div>
+  </div>
+  
+  <div class="page-content">
+<form style="margin:0 0 80px;" id="submit_review_form" class="list-block">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title label">Name</div>
+          <div class="item-input">
+            <input id="reviewname" type="text" name="review_name" placeholder="Name">
+          </div>
+        </div>
+      </div>
+    </li>
+     <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title label">Email</div>
+          <div class="item-input">
+            <input id="reviewemail" type="email" name="review_email" placeholder="Email" id="email">
+          </div>
+        </div>
+      </div>
+    </li>
+     <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title label">Website</div>
+          <div class="item-input">
+            <input id="reviewwebsite" type="text" name="review_website" placeholder="Website">
+          </div>
+        </div>
+      </div>
+    </li>
+    
+     <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title label">Review Title</div>
+          <div class="item-input">
+            <input id="reviewtitle" type="text" name="review_title" placeholder="Review Title">
+          </div>
+        </div>
+      </div>
+    </li>
+     <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title label">Rating</div>
+          <div class="item-input">
+			<div class="stars">
+				<input type="radio" name="star" class="star-1" id="star-1" value="1" />
+				<label class="star-1" for="star-1"></label>
+				<input type="radio" name="star" class="star-2" id="star-2" value="2" />
+				<label class="star-2" for="star-2"></label>
+				<input type="radio" name="star" class="star-3" id="star-3" value="3" />
+				<label class="star-3" for="star-3"></label>
+				<input type="radio" name="star" class="star-4" id="star-4" value="4" />
+				<label class="star-4" for="star-4"></label>
+				<input type="radio" name="star" class="star-5" id="star-5" value="5" />
+				<label class="star-5" for="star-5"></label>
+				<span></span>
+			</div>
+            </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title">Review</div>
+          <div class="item-input">
+            <textarea id="reviewcontent" placeholder="Enter your Review description..." name="review_content"></textarea>
+          </div>
+        </div>
+      </div>
+    </li>
+	<li>
+      <div class="item-content">
+        <div class="item-inner">
+          <a id="submitreview" onclick="return submit_app_review()" href="javascript:void(0)" class="button form-to-data color-red button-fill">Submit Review</a>
+        </div>
+      </div>
+    </li>	
+  </ul>
+
+</form>
+
+</div>
+</div>
+

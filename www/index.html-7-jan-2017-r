@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#2196f3">
+    <title>Framework7 Material</title>
+    <link rel="stylesheet" href="css/framework7.material.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Roboto:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/material-icons.css">
+    <link rel="stylesheet" href="css/kitchen-sink.css">
+    
+    <link rel="stylesheet" href="css/template.css">
+    <link href="font-icons/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <link rel="icon" href="img/icon.png">
+  </head>
+  <body>
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <!--left panel
+    ======================================================================-->
+    <div class="panel panel-left panel-cover">
+      <div class="view navbar-fixed" style="height: 58px;">
+        <div class="pages">
+          <div data-page="panel-left" class="page">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="center"><img class="home-page-logo" src="img/logo-white.png" alt=""></div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+	  <div class="list-block" style="margin:0;">
+      <ul>
+        <li class="item-content">
+          <div class="item-media"><i class="fa fa-home"></i></div>
+          <div class="item-inner">
+            <a href="index.html" ><div class="item-title">Home</div></a>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-media"><i class="fa fa-plus" aria-hidden="true"></i></div>
+          <div class="item-inner">
+            <a href="newapps.html" class="link link-1"><div class="item-title">Last Week New Apps</div></a>
+            
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-media"><i class="fa fa-star" aria-hidden="true"></i></div>
+          <div class="item-inner">
+            <a href="topapps.html" class="link link-2"><div class="item-title">Top App Picks</div></a>
+            
+          </div>
+        </li>
+		 <li class="item-content">
+          <div class="item-media"><i class="fa fa-check" aria-hidden="true"></i></div>
+          <div class="item-inner">
+            <a href="mostdownloads.html" class="link link-2"><div class="item-title">Most Downloads</div></a>
+            
+          </div>
+        </li>
+		 <li class="item-content">
+          <div class="item-media"><i class="fa fa-dashboard" aria-hidden="true"></i></div>
+          <div class="item-inner">
+            <a href="comingonfast.html" class="link link-2"><div class="item-title">Coming On Fast</div></a>
+            
+          </div>
+        </li>
+		 <li class="item-content">
+          <div class="item-media"><i class="fa fa-heart" aria-hidden="true"></i></div>
+          <div class="item-inner">
+            <a href="mostunique.html" class="link link-2"><div class="item-title">Most Unique</div></a>
+            
+          </div>
+        </li>
+      </ul>
+      
+    </div>
+   
+    </div>
+    <!--END-->
+    
+   <div class="views">
+      <div class="view view-main">
+        <div class="pages navbar-fixed">
+          <div data-page="login-screen-embedded" class="page category-page">
+	          <div class="navbar">
+                <div class="navbar-inner">
+                  <div class="left"></div>
+                  <div class="center"><img class="home-page-logo" src="img/logo-white.png" alt=""/></div>
+                  <div class="right"><a href="searchbar.html" class="link icon-only"><i class="fa fa-search" aria-hidden="true"></i></a><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                </div>
+              </div>
+              <div class="page-content category-page-content">
+              	<div class="category-list">
+                	<ul>
+                    	<li class="new-app-cat">
+                        	<a href="newapps.html">
+                            	<div class="box-title"><span>Discover The Best</span>New apps</div>
+                            </a>
+                        </li>
+                        <li class="going-viral-app-cat">
+                        	<a href="home.html">
+                            	<div class="box-title"><span>Discover Great Apps</span>Going Viral</div>
+                            </a>
+                        </li>
+                        <li class="hidden-gems-cat">
+                        	<a href="zombie.html">
+                            	<div class="box-title"><span>Discover What You Missed</span>Hidden gems</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="picker-modal picker-1">
+    <div class="toolbar">
+      <div class="toolbar-inner">
+        <div class="left"></div>
+        <div class="right"><a href="#" class="close-picker">Close Video</a></div>
+      </div>
+    </div>
+    <div class="picker-modal-inner">
+      <div class="content-block" style="margin: 0px;">
+       <p><iframe id="video_link" style="height: 170px; " width="100%" src=""></iframe></p>
+      </div>
+    </div>
+  </div>
+    
+     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="js/jScript.js?var=111"></script>
+  <!--  <script type="text/javascript" src="js/cache.js"></script>-->
+    <script type="text/javascript" src="js/querystring-0.9.0.js"></script>
+   <!-- <script type="text/javascript" src="js/kitchen-sink.js"></script>-->
+    <script type="text/javascript" src="js/framework7.js"></script>
+    <script type="text/javascript" src="js/service-notifications.js"></script>
+    <script>
+    function category_apps_search(){
+			  var inputsearch,key;
+			  inputsearch = jQuery("#appsearch").val();
+			  localStorage.setItem(key, inputsearch);
+		}
+    function categorypage(categoryid){
+			  var currentcategory;
+			  localStorage.setItem(currentcategory, categoryid);
+		}
+    </script>
+  </body>
+</html>

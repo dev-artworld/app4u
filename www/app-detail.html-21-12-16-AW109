@@ -1,0 +1,313 @@
+<script>
+{
+"template":"app-detail.html",
+ "events":{"afterLoadTemplate":function(){
+    //alert("hiiii");
+  jQuery.ajax({
+    //url:"http://apps4u.myworkspacefiles.com/?source=app&action=single_app&ID=1039",
+    url:"http://apps4u.myworkspacefiles.com/?source=app&action=single_app&ID=983",
+    //data: {user_id: uid},
+    type:"GET",
+    async:true,
+    beforeSend:function(){
+     myApp.showIndicator();
+    },
+    success:function(res){
+
+        var data             =   JSON.parse( res );
+
+        var app_title        =   data[0].app_title;
+        var app_category     =   data[0].app_category;
+        var add_subcategory  =   data[0].add_subcategory;
+        var apple_link       =   data[0].apple_link;
+        var google_link      =   data[0].google_link;
+        var image            =   data[0].Image;
+        var section          =   data[0].section;
+        var video_url        =   data[0].video_url;
+        var featured_ap      =   data[0].featured_ap;
+        var featured_image   =   data[0].Featured_Image;
+        var review           =   data[0].Review;
+        
+        jQuery("#app_detail_page .app-title").text(app_title);
+        jQuery("#app_detail_page .video-img").find("object").attr("data",video_url);
+        jQuery("#app_detail_page .app-img").find("img").attr("src",featured_image);
+        jQuery("#app_detail_page .testimonial-row").find(".row-1").find(".right-col").find("i").css("color","#999");
+        var html = "";
+        var rating = 0;
+        for (i = 0; i < review.length; i++) {
+                
+                html += '<div class="swiper-slide" style="width:50%;">';
+                html +=     '<div class="testimonial-row">';
+                html +=         '<div class="row-1">';
+                html +=             '<div class="left-col">'+review[i].review_name+'</div>';
+                html +=             '<div class="right-col">';
+                html +=                 '<i class="fa fa-star" aria-hidden="true"></i>';
+                html +=                 '<i class="fa fa-star" aria-hidden="true"></i>';
+                html +=                 '<i class="fa fa-star" aria-hidden="true"></i>';
+                html +=                 '<i class="fa fa-star" aria-hidden="true"></i>';
+                html +=                 '<i class="fa fa-star" aria-hidden="true"></i>';
+                html +=             '</div>';
+                html +=             '<div class="clear"></div>';
+                html +=         '</div>';
+                html +=         '<div class="row-2">'+review[i].post_content+'</div>';
+                html +=     '</div>';
+                html += '</div>';
+
+                rating += parseInt(review[i].review_rating);
+                //ratingss = parseInt(review[i].review_rating);
+        }
+        averageRating = rating/review.length;
+        averageRating = parseFloat(Math.round(averageRating * 100) / 100).toFixed(1);
+        jQuery("#app_detail_page .app-detail-top-h").find(".swiper-wrapper").append(html);
+        jQuery("#app_detail_page .app-detail-top-g").find(".row-2").find("strong").text(review.length+" total review");
+        jQuery("#app_detail_page .app-detail-top-g").find(".row-2").find(".col-2").find("span").text(averageRating);
+
+        starColor = Math.round(averageRating);
+        if (starColor <= 1.5 ) {
+            jQuery("#app_detail_page .app-detail-top-g").find(".row-2").find(".col-1").find("i:lt(1)").css("color","#f5b819");
+        }else if(starColor > 1.5 && starColor <=2.5){
+            jQuery("#app_detail_page .app-detail-top-g").find(".row-2").find(".col-1").find("i:lt(2)").css("color","#f5b819");
+        }else if(starColor > 2.5 && starColor <=3.5){
+            jQuery("#app_detail_page .app-detail-top-g").find(".row-2").find(".col-1").find("i:lt(3)").css("color","#f5b819");
+        }else if(starColor > 3.5 && starColor <=4.5){
+            jQuery("#app_detail_page .app-detail-top-g").find(".row-2").find(".col-1").find("i:lt(4)").css("color","#f5b819");
+        }else if(starColor > 4.5 ){
+            jQuery("#app_detail_page .app-detail-top-g").find(".row-2").find(".col-1").find("i:lt(5)").css("color","#f5b819");
+        }else{
+            jQuery("#app_detail_page .app-detail-top-g").find(".row-2").find(".col-1").find("i").css("color","#999");
+        }
+
+        
+        /*if (ratingss <= 1.5 ) {
+            jQuery(".testimonial-row").find(".row-1").find("i:lt(1)").css("color","#f5b819");
+        }else if(ratingss > 1.5 && ratingss <=2.5){
+            jQuery(".testimonial-row").find(".row-1").find("i:lt(2)").css("color","#f5b819");
+        }else if(ratingss > 2.5 && ratingss <=3.5){
+            jQuery(".testimonial-row").find(".row-1").find("i:lt(3)").css("color","#f5b819");
+        }else if(ratingss > 3.5 && ratingss <=4.5){
+            jQuery(".testimonial-row").find(".row-1").find("i:lt(4)").css("color","#f5b819");
+        }else if(ratingss > 4.5 ){
+            jQuery(".testimonial-row").find(".row-1").find("i:lt(5)").css("color","#f5b819");
+        }else{
+            jQuery(".testimonial-row").find(".row-1").find("i").css("color","#999");
+        }*/
+        
+    },
+    complete:function(){
+        myApp.hideIndicator();
+        jQuery("#app_detail_page .app-detail-top-h").find('.swiper-container')[0].swiper.update();
+    }
+  });
+
+    }
+  }
+}
+</script>
+<!--header-->
+<!--/header-->
+
+<div id="app_detail_page" data-page="app-detail" class="page">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+      <div class="center">Going Viral</div>
+      <div class="right"><a href="#" class="open-panel link icon-only"><i class="fa fa-search" aria-hidden="true"></i></a><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+    </div>
+  </div>
+  
+  <div class="toolbar toolbar-bottom">
+    <div class="toolbar-inner">
+    	<div class="footer-nav">
+        	<a href="home.html" class="link link-1"><i class="fa fa-plus" aria-hidden="true"></i><span>Last Week New Apps</span></a>
+            <a href="home.html" class="link link-2"><i class="fa fa-star" aria-hidden="true"></i><span>Top App Picks</span></a>
+            <a href="home.html" class="link link-3"><i class="fa fa-check" aria-hidden="true"></i><span>Most Downloads</span></a>
+            <a href="home.html" class="link link-4"><i class="fa fa-dashboard" aria-hidden="true"></i><span>Coming On Fast</span></a>
+            <a href="home.html" class="link link-5"><i class="fa fa-heart" aria-hidden="true"></i><span>Most Unique</span></a>
+        </div>
+    </div>
+  </div>
+  
+  <div class="page-content">
+  	<!--app-detail-wrapper-->
+    <div class="app-detail-wrapper">
+    	<div class="app-detail-top-a">
+        	<div class="left-col">
+            	<div class="col-1">
+                	<div class="app-img">
+                        <!--<img src="img/featured-app-img.png" alt=""/>-->
+                        <img src="" alt=""/>
+                    </div>
+                </div>
+                <div class="col-2">
+                	<div class="app-name-row app-title"></div>
+                    <div class="app-name-row"></div>
+                    <div class="everyone-row"><img src="img/everyone-img.png" alt=""/></div>
+                    <div class="share-btn"><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> Share</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="right-col">
+            	<div class="app-rating-row"><img src="img/stars-rating-img.png" alt=""/><span>Business</span></div>
+              <div class="app-price-row">$1.29</div>
+              <div class="buy-app-row"><a href="#">Buy App <i class="fa fa-angle-down" aria-hidden="true"></i></a></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="app-detail-top-b">
+        	<div class="video-img">
+                <!--<img src="img/app-video-img.jpg" alt=""/>-->
+                 <object data="" width="560" height="315"></object>
+            </div>
+        </div>
+        <div class="app-detail-top-c">
+        	<div data-pagination=".swiper-pagination-c3" data-space-between="10" data-slides-per-view="3" class="swiper-container swiper-init ks-carousel-slider">
+            <div class="swiper-pagination swiper-pagination-c3"></div>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+   	    	    	<img src="img/app-slider-img1.jpg" alt=""/> 
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/app-slider-img2.jpg" alt=""/> 
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/app-slider-img3.jpg" alt=""/> 
+                </div>
+                <div class="swiper-slide">
+   	    	    	<img src="img/app-slider-img1.jpg" alt=""/> 
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/app-slider-img2.jpg" alt=""/> 
+                </div>
+                <div class="swiper-slide">
+                	<img src="img/app-slider-img3.jpg" alt=""/> 
+                </div>
+              </div>
+            </div>
+        </div>
+        <!---->
+        <div class="app-detail-top-d">
+        	<div class="left-col">
+            	<div class="app-img">
+                    <!--<img src="img/featured-app-img.png" alt=""/>-->
+                    <img src="" alt=""/>
+                </div>
+            </div>
+            <div class="right-col">
+            	<div class="app-name-row"><span>Developer</span>Polaris Office Corp.<span>www.polaris.com</span></div>
+            </div>
+            <div class="clear"></div>
+            <div class="more-apps-row">
+                <div class="row-1">More Apps By Polaris Office Corp</div>
+                <div class="row-2">
+                    <a href="#"><img src="img/more-app-img1.png" alt=""/></a>
+                    <a href="#"><img src="img/more-app-img2.png" alt=""/></a>
+                    <a href="#"><img src="img/more-app-img3.png" alt=""/></a>
+                    <a href="#"><img src="img/more-app-img4.png" alt=""/></a>
+                </div>
+            </div>
+        </div>
+        <!---->
+        <div class="app-detail-top-e">
+        	<div class="title-row">App detail</div>
+            <ul>
+            	<li>Best mobile office software, choosen by 36 million users worldwide.</li>
+                <li>Powerfully compatible with Microsoft Office, with faster document loading.</li>
+                <li>With Polaris office, continue to work free on your document from smartphone, tablet and PC.</li>
+                <li>View or edit your documents anytime, anywhere with Polaris Office.</li>
+                <li>Continue your work on your smartphone, tablet, and PC.</li>
+                <li>View or edit MS office documents.</li>
+                <li>Manage documents in various cloud storage services with Polaris Office</li>
+            </ul>
+        </div>
+        <!---->
+        <!---->
+        <div class="app-detail-top-f">
+        	<div class="title-row">Additional Information</div>
+            <div class="content-row">
+            	<ul>
+                	<li>
+                    	<div><strong>Updated</strong>Febuary 5, 2016</div>
+                        <div><strong>Current Version</strong>7.2.1</div>
+                        <div><strong>Interactive Elements</strong>Users Interact, Digital Purchases</div>
+                        <div><strong>Report</strong>Flag as inappropriate</div>
+                    </li>
+                    <li>
+                    	<div><strong>Size</strong>48M</div>
+                        <div><strong>Requires Android</strong>4.0 and up</div>
+                        <div><strong>In-app Products</strong>$0.99 - $59.99 per item</div>
+                        <div><strong>Offered By</strong>Polaris Office Corp.</div>
+                    </li>
+                    <li>
+                    	<div><strong>Installs</strong>10,000,000 - 50,000,000</div>
+                        <div><strong>Content Rating</strong>Everyone</div>
+                        <div><strong>Permissions</strong></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!---->
+        <div class="app-detail-top-g">
+        	<div class="left-col">
+            	<h3>Reviews</h3>
+                <div class="row-2">
+                	<div class="col-1">
+                    	<i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <strong></strong>
+                    </div>
+                    <div class="col-2"><span></span> Average Rating</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="right-col">
+            	<a href="#">Write A Review</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!---->
+        <div class="app-detail-top-h">
+        	<div data-pagination=".swiper-pagination-c2" data-space-between="15" data-slides-per-view="2" class="swiper-container swiper-init ks-carousel-slider">
+                <div class="swiper-wrapper"></div>
+            </div>
+        </div>
+        <!---->
+        <div class="app-detail-top-i">
+        	<div class="related-apps-wrapper">
+            	<h3>Related Apps</h3>
+            	<ul>
+                	<li>
+                        <a href="#"><img src="img/related-app-icon1.png" alt=""/></a>
+                        <h3>Full Contact Card Reader</h3>
+                        <a href="#" class="download-btn">Download</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="img/related-app-icon2.png" alt=""/></a>
+                        <h3>Full Contact Card Reader</h3>
+                        <a href="#" class="download-btn">Download</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="img/related-app-icon3.png" alt=""/></a>
+                        <h3>Full Contact Card Reader</h3>
+                        <a href="#" class="download-btn">Download</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="img/related-app-icon4.png" alt=""/></a>
+                        <h3>Full Contact Card Reader</h3>
+                        <a href="#" class="download-btn">Download</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="img/related-app-icon5.png" alt=""/></a>
+                        <h3>Full Contact Card Reader</h3>
+                        <a href="#" class="download-btn">Download</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!---->
+    </div>
+    <!--END-->
+  </div>
+</div>

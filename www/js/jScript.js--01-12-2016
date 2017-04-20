@@ -1,0 +1,1000 @@
+var server = "http://188.166.227.51/pucci";
+
+Date.prototype.addDays = function(days){
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+}
+
+function saveFeaturedDevice(thisCheckbox){
+	var data_id = jQuery(thisCheckbox).find("input[type='checkbox']").val();
+	var user_id = localStorage.getItem("uid");
+	var value = "";
+	if(jQuery(thisCheckbox).find("input[type='checkbox']").is(":checked")){
+
+	//	alert("ON");
+		 value= "OFF"
+
+	} else {
+
+	//	alert("OFF");
+		 value="ON"
+
+	}
+
+	jQuery.ajax({
+		url:server+"/webservice/controller.php?action=featureditems",
+		type:"POST",
+		data:{user_id:user_id,device_id:data_id,status:value},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();				
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			if(!data.error){
+				myApp.alert("Successfully updated!","App",function(){
+					//mainView.back();
+				});
+			}
+			
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+
+}
+
+function registerUser(){
+	if(validateForm()){
+		var DataObj=new Object();
+		var data=jQuery("form[name='signup']").serializeArray();	
+		for(var i in data){
+			DataObj[data[i].name]=data[i].value;
+		}
+		jQuery.ajax({
+			url:server+"/webservice/controller.php?action=register",
+			type:"POST",
+			data:DataObj,
+			async:true,
+			beforeSend:function(){
+				myApp.showIndicator();				
+			},
+			success:function(res){
+				var data = JSON.parse(res);
+				console.log(data);
+				if(!data.error){
+					localStorage.setItem("uid",data.response);
+					myApp.alert("account created successfully!","App",function(){
+						mainView.back();
+					});
+				}
+				
+			},
+			complete:function(){
+				myApp.hideIndicator();
+			}
+		});
+	}
+}
+
+function login(){
+	
+	var username = document.getElementsByName("username")[0].value;
+	var password = document.getElementsByName("password")[0].value;
+	
+	if(username==""){
+		myApp.alert("please enter username");
+		return false;
+	}
+	if(password==""){
+		myApp.alert("please enter password");
+		return false;
+	}
+	
+	jQuery.ajax({
+		url:server+"/webservice/controller.php",
+		type:"POST",
+		data:{"action":'login',"username":username,"password":password},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(data);
+			if(!data.error){
+				localStorage.setItem("uid",data.user);
+				loadleftpanel();
+				if(data.response == "exist"){
+					mainView.router.loadPage("home.html");
+				} else {
+					mainView.router.loadPage("add-device.html");
+				}
+			}else{
+				myApp.alert("wrong username or password");
+			}
+			
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function forgot_pass(){
+	
+	var email = document.getElementsByName("email")[0].value;
+	
+	
+	jQuery.ajax({
+		url:server+"/webservice/forget-passwrd.php",
+		type:"POST",
+		data:{"email":email},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(res);
+			console.log(data);
+			//console.log(data.results.error);
+			if(data.results == undefined || data.results == null || data.results.length == 0){
+				myApp.alert("Please Enter Email Id.");
+				
+			}
+			else
+			{
+
+				console.log(data);
+
+				myApp.alert("Password is sent to your mail.");
+				//localStorage.setItem("User_Id",data.response);
+				//mainView.router.reloadPage("home.html")
+				//window.location.href="index.html";
+			}
+			
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function saveDeviceSettings(inputAttr){
+	
+var data_name = jQuery(inputAttr).find("input[type='checkbox']").attr("name");
+var type_name = jQuery(inputAttr).find("input[type='checkbox']").attr("type");
+var value="";
+
+var deviceid=localStorage.getItem("deviceid")
+if(type_name=="checkbox"){
+	if(jQuery(inputAttr).find("input[type='checkbox']").is(":checked")){
+
+	//	alert("ON");
+		 value= "OFF"
+
+	} else {
+
+	//	alert("OFF");
+		 value="ON"
+
+	}
+}
+else{
+	value = jQuery(inputAttr).val();
+	
+	alert(value);
+	
+}
+	
+//alert("name : "+data_name+" value:: "+value+" device_id ::"+deviceid);
+	jQuery.ajax({
+		url:server+"/webservice/controller.php?action=savesetting",
+		type:"POST",
+		data:{"name":data_name,"value":value,"device_id":deviceid},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data =JSON.parse( res );
+
+			//alert(JSON.stringify(data));
+
+			if(data.response=="setting updated"){
+				//console.log(data);
+				//localStorage.setItem('emailExist',1);
+				myApp.alert("setting saved");
+			}else{
+				//localStorage.removeItem('emailExist');
+			}
+			
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+
+
+function emailExist(){
+	//var emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	var email = document.getElementsByName("email")[0].value;
+/*	if(!email.match(emailPattern)){
+		myApp.alert("please enter a valid email");
+		return false;
+	}*/
+	jQuery.ajax({
+		url:"http://188.166.227.51/pucci/webservice/controller.php?action=checkemail",
+		type:"POST",
+		data:{"email":email},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			if(data.response=="false"){
+				console.log(data);
+				//localStorage.setItem('emailExist',1);
+				myApp.alert("this email is already register with us");
+			}else{
+				localStorage.removeItem('emailExist');
+			}
+			
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function setting(){
+//alert("565")
+	var id=jQuery(".tab-link.active").attr("data-id");
+	localStorage.setItem("deviceid",id);
+	mainView.router.loadPage("settings.html")
+
+	
+}
+
+function setting_other(device_id){
+	localStorage.setItem("deviceid",device_id)
+	mainView.router.loadPage("settings.html")
+}
+
+function logout(){
+	localStorage.clear();
+	mainView.router.reloadPage("index.html");
+	myApp.alert("you are logged out!");
+	location.reload();
+}
+ function del_alert(id){
+ 	
+ 	$.ajax({
+    type:'POST',
+    url:'http://188.166.227.51/sensor/webservice/controller.php?action=deletealert',
+    data:{id:id},
+    success: function(data1){
+    	var data=JSON.parse(data1);
+    	console.log(data)
+         if(data.response>0){
+         	mainView.router.reloadPage("show-alerts.html");
+             //jQuery($_this).closest(".list-block").fadeOut("slow").remove()
+         }else{
+             alert("can't delete the row")
+         }
+    }
+
+     })
+
+}
+
+function del_sensor(id){
+	$.ajax({
+    type:'POST',
+    url:'http://188.166.227.51/sensor/webservice/controller.php?action=deletesensor',
+    data:{id:id},
+    success: function(data1){
+    	var data=JSON.parse(data1);
+    	console.log(data)
+         if(data.response>0){
+         mainView.back();
+             //jQuery($_this).closest(".list-block").fadeOut("slow").remove()
+         }else{
+             alert("can't delete the row")
+         }
+    }
+
+     })
+}
+
+/*function setdeviceid(obj){
+	var tab=jQuery(obj).attr("data-link");
+	var id=jQuery(obj).attr("data-id");
+	jQuery("#devset").attr("onclick","setting('"+id+"')");
+    myApp.showTab(tab);
+}*/
+
+function confirm_username(){
+
+	
+	var username = document.getElementById("username").value;
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/userexist.php",
+		type:"POST",
+		data:{"username":username},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(data);
+			if(!data.results.error){
+				console.log(data);
+				//localStorage.setItem('emailExist',1);
+				myApp.alert("this username is already register with us");
+			}else{
+				localStorage.setItem('userExist',username);
+			}	
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function confirm_password(){
+
+	var password = localStorage.getItem('password');
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/passwordexist.php",
+		type:"POST",
+		data:{"password":password},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(data);
+			if(!data.results.error){
+				return true;
+			}else{
+				return false;
+			}	
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function validPwd()
+{
+	var password 	= document.getElementsByName("password")[0].value;
+	var cpassword 	= document.getElementsByName("confirm_password")[0].value;
+	if(password==""){
+		myApp.alert("please enter new password");
+		return false;
+	}
+	if(cpassword==""){
+		myApp.alert("please enter confirm password");
+		return false;
+	}
+	if(password!=cpassword){
+		myApp.alert("password doesn't match");
+		return false;
+	}	
+	return true;
+}
+
+function validateForm(){
+
+	var emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	var $form 	= document.getElementsByName("signup")[0].elements;
+	var firstName = $form.first_name.value;
+	var lastName= $form.last_name.value;
+	var email 	= $form.email.value;
+	var password= $form.password.value;
+	var cpassword= $form.cpassword.value;
+	//var cpassword= $form.cpassword.value;
+
+	if(firstName == ""){
+		myApp.alert("Please enter First Name","App");		
+		return false;
+	}
+	if(lastName == ""){
+		myApp.alert("Please enter Last Name","App");		
+		return false;
+	}
+	if(email == ""){
+		myApp.alert("Please enter email","App");		
+		return false;
+	}
+	if(!email.match(emailPattern)){
+		myApp.alert("please Enter a valid email address","App");
+		return false;
+	}
+	if(password == ""){
+		myApp.alert("Please enter Password!","App");
+		return false;
+	}
+	
+	if(password!=cpassword){
+		myApp.alert("password doesn't match");
+		return false;
+	}	
+	return true;
+}
+
+function insertAction(){
+	//alert("hii")
+     var uid=localStorage.getItem("uid");
+     var s_id=localStorage.getItem("s_id");
+	var DataObj=new Object();
+	var data=jQuery("form[name='sensor_actions']").serializeArray();
+	  for(var i in data){
+		DataObj[data[i].name]=data[i].value;
+	     }
+	DataObj["user_id"]=uid;
+	DataObj["sensor_id"]=s_id;
+	/*var actions = new Array();
+	jQuery(".sensor_actions").each(function(){
+		var sound = $(this).find(".item-title").text();
+		var reading = $(this).find(".item-after").text();
+		var message = $(this).find(".item-text").text();
+		var title    = $(this).find(".item-title").text();
+         alert(sound);
+		actions.push({"sound":sound,"reading":reading,"message":message,"user_id": uid,"sensor_id": s_id,"title":title});
+	});
+	DataObj["actions"]=actions;*/
+	jQuery.ajax({
+		url:"http://188.166.227.51/sensor/webservice/controller.php?action=add-alerts",
+		type:"POST",
+		data:DataObj,
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();				
+		},
+		success:function(res){
+			var data =JSON.parse( res );
+			console.log(data);
+			if(!data.error){
+				myApp.alert("Action Added successfully!","App",function(){
+					jQuery("form[name='sensor_actions'] input, textarea").val("")
+					jQuery("form[name='sensor_actions'] select").prop("selectedIndex",0)
+					mainView.back();
+					// mainView.router.reloadPage("show-alerts.html");
+				});
+			}		
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+
+
+	
+}
+function edit(id){
+	var aid=localStorage.setItem("aid",id);
+  var aid =localStorage.getItem("aid");
+  mainView.router.loadPage("insert-action.html");
+ // alert(aid);
+
+}
+
+function loadleftpanel(){
+
+  var uid=localStorage.getItem("uid");
+ // var d_id=localStorage.getItem("d_id");
+  jQuery.ajax({
+    url:"http://188.166.227.51/pucci/webservice/controller.php?action=getuser",
+    data: {user_id: uid},
+    type:"GET",
+    async:true,
+    beforeSend:function(){
+      myApp.showIndicator();
+    },
+    success:function(res){
+      if(res!=""){
+      var data =JSON.parse( res );
+      //console.log(data.response[0].device_name);
+     document.getElementById("leftpanel").innerHTML = data.response[0].email  ; 
+    // document.getElementById("gps").innerHTML =  ; 
+     //jQuery("#gps").attr("onclick","setting_other('"+data.response[0].device_id+"')")
+
+   }
+    // document.getElementById("reading").innerHTML = data[0].reading  ; 
+     //document.getElementById("message").innerHTML = data[0].description  ; 
+    // $("#delsensor").attr('onclick', 'del_sensor('+data[0].id+')');
+    },
+
+    complete:function(){
+      myApp.hideIndicator();
+    }
+  });
+
+
+
+
+
+}
+function share(id){
+	var s_id=localStorage.getItem("s_id")
+	//alert(s_id);
+	var emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	
+            myApp.prompt('Enter your email :', function (value) {
+            		if(!value.match(emailPattern)){
+					myApp.alert("please Enter a valid email address","App");
+					return false;
+				    }	
+				jQuery.ajax({
+					url:"http://188.166.227.51/sensor/webservice/controller.php?action=shareSensor",
+					type:"POST",
+					data:{id:s_id,email:value},
+					async:true,
+					beforeSend:function(){
+						myApp.showIndicator();				
+					},
+					success:function(res){
+						var data = JSON.parse(res);
+                         
+						if(!data.error){
+							myApp.alert("Sensor shared successfully!","App",function(){
+								//mainView.back();
+								//mainView.router.reloadPage("dashboard.html");
+							});
+						}	
+						else{
+							myApp.alert(data.response);
+						}	
+					},
+					complete:function(){
+						myApp.hideIndicator();
+					}
+				});
+			//}
+            });
+        // });
+
+         $$('.prompt-ok-cancel').on('click', function () {
+            myApp.prompt('Enter your email?', function (value) {
+            
+
+                myApp.alert('Email is "' + value + '" and you have clicked Ok button.');
+
+              },
+              function (value) {
+                myApp.alert('Email is "' + value + '" and you have clicked cancel button.');
+              }
+            );
+         });
+        /* $$('.prompt-title-ok').on('click', function () {
+            myApp.prompt('Enter your name?', 'My Title', function (value) {
+                myApp.alert('Name is "' + value + '" and you have clicked Ok button.');
+            });
+         });
+         $$('.prompt-title-ok-cancel').on('click', function () {
+            myApp.prompt('Enter your name?', 'My Title', function (value) {
+                myApp.alert('Name is "' + value + '" and you have clicked Ok button.');
+              },
+              function (value) {
+                myApp.alert('Name is "' + value + '" and you have clicked cancel button.');
+              }
+            );
+         });*/
+        
+}
+
+function viewdevice(device_id){
+	localStorage.setItem("deviceid",device_id);
+	//alert("heloo");
+	mainView.router.loadPage("view-device.html");
+
+}
+
+function find(device_id){
+	localStorage.setItem("deviceid",device_id)
+	mainView.router.loadPage("croud-gps.html")
+}
+
+function update_sensor(){
+
+	var DataObj=new Object();
+	var data=jQuery("form[name='add_sensor']").serializeArray();
+	for(var i in data){
+		DataObj[data[i].name]=data[i].value;
+	}
+	DataObj["id"]=localStorage.getItem("s_id");
+	
+	jQuery.ajax({
+		url:"http://188.166.227.51/sensor/webservice/controller.php?action=updatesensor",
+		type:"POST",
+		data:DataObj,
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();				
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+
+			if(!data.error){
+				myApp.alert("Sensor updated successfully!","App",function(){
+					mainView.back();
+				//	mainView.router.reloadPage("dashboard.html");
+				});
+			}		
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+
+}
+
+function update_alert(){
+
+	var DataObj=new Object();
+	var data=jQuery("form[name='sensor_actions']").serializeArray();
+	for(var i in data){
+		DataObj[data[i].name]=data[i].value;
+	}
+	DataObj["id"]=localStorage.getItem("aid");
+	
+	jQuery.ajax({
+		url:"http://188.166.227.51/sensor/webservice/controller.php?action=updatealerts",
+		type:"POST",
+		data:DataObj,
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();				
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+
+			if(!data.error){
+				myApp.alert("Alert updated successfully!","App",function(){
+					mainView.back();
+					//mainView.router.reloadPage("show-alerts.html");
+				});
+			}		
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+
+}
+ 
+function addDevice(){
+	var device_name = document.getElementsByName("device_name")[0].value;
+	if(device_name==""){
+		myApp.alert("Please enter device name");
+	
+}
+else{
+	var DataObj = new Object();
+	
+	var data=jQuery("form[name='add_device']").serializeArray();
+	for(var i in data){
+		DataObj[data[i].name]=data[i].value;
+	}
+	DataObj["user_id"]=localStorage.getItem("uid");
+	DataObj["device_icon"] = jQuery("form[name='add_device'] input[type='file']").files;
+	DataObj["device_id"] = Math.random().toString(36).slice(2);
+
+
+	jQuery.ajax({
+		url:server+"/webservice/controller.php?action=add-device",
+		type:"POST",
+		data:DataObj,
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();				
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+				
+			console.log(data);
+
+			if(!data.error){
+				myApp.alert("Device Added successfully!","App",function(){
+					myApp.closeModal(".demo-popup");
+					mainView.router.reloadPage("home.html");
+				});
+			}		
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+}
+
+function addgroup(){
+	var group_name = document.getElementsByName("group_name")[0].value;
+	if(group_name==""){
+		myApp.alert("Please enter group name");
+	
+}
+else{
+	var DataObj = new Object();
+	
+	var data=jQuery("form[name='add_group']").serializeArray();
+	for(var i in data){
+		DataObj[data[i].name]=data[i].value;
+	}
+	DataObj["user_id"]=localStorage.getItem("uid");
+	//DataObj["device_icon"] = jQuery("form[name='add_device'] input[type='file']").files;
+	//DataObj["device_id"] = Math.random().toString(36).slice(2);
+
+
+	jQuery.ajax({
+		url:server+"/webservice/controller.php?action=addgroup",
+		type:"POST",
+		data:DataObj,
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();				
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+				
+			console.log(data);
+
+			if(!data.error){
+				myApp.alert("Group Added successfully!","App",function(){
+					myApp.closeModal(".demo-popup1");
+					mainView.router.reloadPage("invite-list.html");
+				});
+			}		
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+}
+
+function addcontact(id){
+	localStorage.setItem("groupid", id);
+	var groupid=localStorage.getItem("groupid");
+    console.log(groupid);
+    mainView.router.loadPage("add-contact.html");
+}
+function addgroupcontact(){
+
+	var did = document.getElementsByName("device_name")[0].value;
+	if(did==""){
+		myApp.alert("Please enter device name");
+	
+}
+else{
+	var DataObj = new Object();
+	
+	var data=jQuery("form[name='add_contact']").serializeArray();
+	for(var i in data){
+		DataObj[data[i].name]=data[i].value;
+	}
+	DataObj["gid"]=localStorage.getItem("groupid");
+	//DataObj["device_icon"] = jQuery("form[name='add_device'] input[type='file']").files;
+	//DataObj["device_id"] = Math.random().toString(36).slice(2);
+
+
+	jQuery.ajax({
+		url:"http://188.166.227.51/pucci/webservice/controller.php?action=add_group_contacts",
+		type:"POST",
+		data:DataObj,
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();				
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+				
+			console.log(data);
+
+			if(!data.error){
+				myApp.alert("Contact Added successfully!","App",function(){
+					//myApp.closeModal(".demo-popup");
+					//mainView.router.reloadPage("home.html");
+				});
+			}		
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+}
+
+function sendmessage(){
+	var name = document.getElementsByName("name")[0].value;
+	var message = document.getElementsByName("message").value;
+
+	if(name!=null && message!=null){
+		myApp.alert("Please enter fields");
+	
+}
+else{
+	var DataObj = new Object();
+	
+	var data=jQuery("form[name='add_message']").serializeArray();
+	for(var i in data){
+		DataObj[data[i].name]=data[i].value;
+	}
+	//DataObj["user_id"]=localStorage.getItem("uid");
+	//DataObj["device_icon"] = jQuery("form[name='add_device'] input[type='file']").files;
+	//DataObj["device_id"] = Math.random().toString(36).slice(2);
+
+
+	jQuery.ajax({
+		url:"http://188.166.227.51/pucci/webservice/controller.php?action=insertmessage",
+		type:"POST",
+		data:DataObj,
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();				
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+				
+			console.log(data);
+
+			if(!data.error){
+				myApp.alert("Message Added successfully!","App",function(){
+					mainView.router.loadPage("messages-list.html")
+					//myApp.closeModal(".demo-popup");
+					//mainView.router.reloadPage("home.html");
+				});
+			}		
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+}
+ function messagedetail(id){
+ 	localStorage.setItem("msgid",id);
+ 	//var msgid=localStorage.getItem("msgid");
+ 	mainView.router.loadPage("messages-detail.html");
+
+ }
+
+
+function updateUser(){
+
+		var name = jQuery("#username").val();
+		var emailid = jQuery("#email").val();
+		var id = jQuery("#user_id").val();
+		var password =jQuery("#pwd").val();
+
+		//var DataObj=new Object();
+		/*var data=jQuery("form[name='updateuser']").serializeArray();	
+		for(var i in data){
+			DataObj[data[i].name]=data[i].value;
+		}*/
+		jQuery.ajax({
+			url:server+"/webservice/controller.php?action=updateuser",
+			type:"POST",
+			data:{username:name,email:emailid,user_id:id,pwd:password},
+			async:true,
+			beforeSend:function(){
+				myApp.showIndicator();				
+			},
+			success:function(res){
+				//var data = JSON.parse(res);
+
+				console.log(res);
+				if(!data.error){
+
+					//console.log("abc");
+					localStorage.setItem("uid",data.response);
+						//mainView.back();
+				}
+				
+			},
+			complete:function(){
+				myApp.hideIndicator();
+			}
+		});
+	
+}
+
+function deleteInvite(id){
+	localStorage.setItem("inviteid",id);
+	var inviteid=localStorage.getItem("inviteid");
+	console.log(inviteid);
+
+	jQuery.ajax({
+			url:server+"/webservice/controller.php?action=deleteinvite",
+			type:"POST",
+			data:{id:inviteid},
+			async:true,
+			beforeSend:function(){
+				myApp.showIndicator();				
+			},
+			success:function(res){
+				//var data = JSON.parse(res);
+
+				console.log(res);
+				if(!data.error){
+					mainView.back();
+					//localStorage.setItem("uid",data.response);
+					//	mainView.router.loadPage("invite-list.html");
+				}
+				
+			},
+			complete:function(){
+				myApp.hideIndicator();
+			}
+		});
+	
+}
+function uploadFromGallery() {
+
+    // Retrieve image file location from specified source
+    navigator.camera.getPicture(uploadPhoto,
+                                function(message) { alert('get picture failed'); },
+                                { quality: 50, 
+                                destinationType: navigator.camera.DestinationType.FILE_URI,
+                                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+                                );
+
+}
+
+function uploadPhoto(imageURI) {
+    var options = new FileUploadOptions();
+    options.fileKey="file";
+    options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1)+'.png';
+    options.mimeType="text/plain";
+
+    var params = new Object();
+
+    options.params = params;
+
+    var ft = new FileTransfer();
+    ft.upload(imageURI, encodeURI("http://188.166.227.51/pucci/webservice/upload.php"), win, fail, options);
+}
+
+function win(r) {
+    console.log("Code = " + r.responseCode);
+    console.log("Response = " + r.response);
+    console.log("Sent = " + r.bytesSent);
+}
+
+function fail(error) {
+    alert("An error has occurred: Code = " + error.code);
+    console.log("upload error source " + error.source);
+    console.log("upload error target " + error.target);
+}
+
+function ShowDeviceTabs(tab,map,latitude,longitude){
+	jQuery(".googleMap").html("");
+	initMap(map,latitude,longitude);
+	myApp.showTab(tab);	
+
+}
+
+function initMap(dataMap,latitude,longitude) {
+
+	var map = new google.maps.Map(document.getElementById('map-'+dataMap), {
+	  zoom: 15,
+	  center: {lat: latitude, lng: longitude}
+	});
+	var marker = new google.maps.Marker({
+	  position: {lat: latitude, lng: longitude},
+	  map: map,
+	  draggable: true,
+      animation: google.maps.Animation.DROP
+	});
+}

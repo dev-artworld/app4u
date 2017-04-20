@@ -1,0 +1,130 @@
+<?php
+header('Access-Control-Allow-Origin: *');
+require_once("model.php");
+
+	class controller {
+
+		private $MODEL;
+
+		public function __construct(){
+			$model = new model();
+			$this->MODEL = $model;
+		}
+
+		public function saveData($data,$table){
+			return $this->MODEL->insert($data,$table);
+		}
+
+		public function login($data){
+			return $this->MODEL->selectUser($data);
+		}
+		public function getdata(){
+			return $this->MODEL->getData();
+		}
+
+	}
+
+	$controller = new controller();
+
+	if(isset($_REQUEST['action']) && $_REQUEST['action']=="register"){
+		$data = array(
+			"first_name"=>$_REQUEST['first_name'],
+			"last_name"=>$_REQUEST['last_name'],
+			"email"=>$_REQUEST['email'],
+			"password"=>md5($_REQUEST['password'])
+			);
+		$result = $controller->saveData($data,"users");
+		if(!empty($result)){
+            echo json_encode(array("response"=>$result,"error"=>0));
+        }else{
+            echo json_encode(array("response"=>"No data found","error"=>1));
+        }
+	}
+
+	if(isset($_REQUEST['action']) && $_REQUEST['action']=="login"){
+		$data = array(
+			"email"=>$_REQUEST['username'],
+			"password"=>md5($_REQUEST['password'])
+			);
+		$result = $controller->login($data);
+		if(!empty($result)){
+            echo json_encode(array("response"=>$result,"error"=>0));
+        }else{
+            echo json_encode(array("response"=>"No data found","error"=>1));
+        }
+	}
+
+	if(isset($_REQUEST['action']) && $_REQUEST['action']=="add-sensor"){
+		$data = array(
+			"name"=>$_REQUEST['name'],
+			"description"=>$_REQUEST['description']
+			);
+		$result = $controller->saveData($data,"sensors");
+		if(!empty($result)){
+			foreach ($_REQUEST['actions'] as $key => $value) {
+				$data = array(
+						"sensor_id"=>$result,
+						"sound"=>$value['sound'],
+						"reading"=>$value['reading'],
+						"message"=>$value['message']
+					);
+				$controller->saveData($data,"sensor_action");
+			}
+            echo json_encode(array("response"=>$result,"error"=>0));
+        }else{
+            echo json_encode(array("response"=>"No data found","error"=>1));
+        }
+	}
+	if(isset($_REQUEST['action']) && $_REQUEST['action']=="getdata"){
+		echo $result = $controller->getdata();
+	}
+
+	if(isset($_REQUEST['action']) && $_REQUEST['action']=="dummydata"){
+		$result = array(
+					array(
+						"sensor"=>array(name=>"Heat Sensor",description=>"This is test description"),
+						"actions"=>array(
+									array(
+										"description"=>"desc1",
+										"msg"=>"message1",
+										"sound"=>"sound1",
+										"reading"=>"reading1"),
+									array(
+										"description"=>"desc2",
+										"msg"=>"message2",
+										"sound"=>"sound2",
+										"reading"=>"reading2"),
+									array(
+										"description"=>"desc3",
+										"msg"=>"message3",
+										"sound"=>"sound3",
+										"reading"=>"reading3")
+									)
+						),
+						array(
+							"sensor"=>array(name=>"Pressure Sensor",description=>"This is test description2"),
+							"actions"=>array(
+										array(
+											"description"=>"desc2-1",
+											"msg"=>"message2-1",
+											"sound"=>"sound2-1",
+											"reading"=>"reading1"),
+										array(
+											"description"=>"desc2-2",
+											"msg"=>"message2-2",
+											"sound"=>"sound2-2",
+											"reading"=>"reading2"),
+										array(
+											"description"=>"desc2-3",
+											"msg"=>"message2-3",
+											"sound"=>"sound2-3",
+											"reading"=>"reading3")
+										)
+							)
+					);
+
+		
+		echo json_encode($result);
+	}
+
+?>

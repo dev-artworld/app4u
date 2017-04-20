@@ -1,0 +1,330 @@
+var server = "http://www.artworldwebsolutions.com/sensor";
+
+Date.prototype.addDays = function(days){
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+}
+
+function registerUser(){
+	if(validateForm()){
+		var DataObj=new Object();
+		var data=jQuery("form[name='signup']").serializeArray();	
+		for(var i in data){
+			DataObj[data[i].name]=data[i].value;
+		}
+		jQuery.ajax({
+			url:server+"/webservice/controller.php?action=register",
+			type:"POST",
+			data:DataObj,
+			async:true,
+			beforeSend:function(){
+				myApp.showIndicator();				
+			},
+			success:function(res){
+				var data = JSON.parse(res);
+				console.log(data);
+				if(!data.error){
+					localStorage.setItem("uid",data.response);
+					myApp.alert("account created successfully!","App",function(){
+						mainView.back();
+					});
+				}
+				
+			},
+			complete:function(){
+				myApp.hideIndicator();
+			}
+		});
+	}
+}
+
+function login(){
+	
+	var username = document.getElementsByName("username")[0].value;
+	var password = document.getElementsByName("password")[0].value;
+	
+	if(username==""){
+		myApp.alert("please enter username");
+		return false;
+	}
+	if(password==""){
+		myApp.alert("please enter password");
+		return false;
+	}
+	
+	jQuery.ajax({
+		url:server+"/webservice/controller.php",
+		type:"POST",
+		data:{"action":'login',"username":username,"password":password},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(data);
+			if(!data.error){
+				localStorage.setItem("uid",data.response);
+				mainView.router.loadPage("dashboard.html");
+			}else{
+				myApp.alert("wrong username or password");
+			}
+			
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function forgot_pass(){
+	
+	var email = document.getElementsByName("email")[0].value;
+	
+	
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/forget-passwrd.php",
+		type:"POST",
+		data:{"email":email},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(res);
+			console.log(data);
+			//console.log(data.results.error);
+			if(data.results == undefined || data.results == null || data.results.length == 0){
+				myApp.alert("Please Enter Email Id.");
+				
+			}
+			else
+			{
+				myApp.alert("Password is sent to your mail.");
+				//localStorage.setItem("User_Id",data.response);
+				//mainView.router.reloadPage("home.html")
+				window.location.href="index.html";
+			}
+			
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function emailExist(){
+	var emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	var email = document.getElementsByName("Email")[0].value;
+	if(!email.match(emailPattern)){
+		myApp.alert("please enter a valid email");
+		return false;
+	}
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/emailexist.php",
+		type:"POST",
+		data:{"email":email},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			if(!data.results.error){
+				console.log(data);
+				//localStorage.setItem('emailExist',1);
+				myApp.alert("this email is already register with us");
+			}else{
+				localStorage.setItem('emailExist',email);
+			}
+			
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function logout(){
+	localStorage.clear();
+	mainView.router.reloadPage("index.html");
+	myApp.alert("you are logged out!");
+}
+
+
+function confirm_username(){
+
+	
+	var username = document.getElementById("username").value;
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/userexist.php",
+		type:"POST",
+		data:{"username":username},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(data);
+			if(!data.results.error){
+				console.log(data);
+				//localStorage.setItem('emailExist',1);
+				myApp.alert("this username is already register with us");
+			}else{
+				localStorage.setItem('userExist',username);
+			}	
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function confirm_password(){
+
+	var password = localStorage.getItem('password');
+	jQuery.ajax({
+		url:"http://artworldwebsolutions.com/service-notifications/webservice/passwordexist.php",
+		type:"POST",
+		data:{"password":password},
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			console.log(data);
+			if(!data.results.error){
+				return true;
+			}else{
+				return false;
+			}	
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+}
+
+function validPwd()
+{
+	var password 	= document.getElementsByName("password")[0].value;
+	var cpassword 	= document.getElementsByName("confirm_password")[0].value;
+	if(password==""){
+		myApp.alert("please enter new password");
+		return false;
+	}
+	if(cpassword==""){
+		myApp.alert("please enter confirm password");
+		return false;
+	}
+	if(password!=cpassword){
+		myApp.alert("password doesn't match");
+		return false;
+	}	
+	return true;
+}
+
+function validateForm(){
+
+	var emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	var $form 	= document.getElementsByName("signup")[0].elements;
+	var firstName = $form.first_name.value;
+	var lastName= $form.last_name.value;
+	var email 	= $form.email.value;
+	var password= $form.password.value;
+
+	if(firstName == ""){
+		myApp.alert("Please enter First Name","App");		
+		return false;
+	}
+	if(lastName == ""){
+		myApp.alert("Please enter Last Name","App");		
+		return false;
+	}
+	if(email == ""){
+		myApp.alert("Please enter email","App");		
+		return false;
+	}
+	if(!email.match(emailPattern)){
+		myApp.alert("please Enter a valid email address","App");
+		return false;
+	}
+	if(password == ""){
+		myApp.alert("Please enter Password!","App");
+		return false;
+	}
+	return true;
+}
+
+function insertAction(){
+	var $form 	= document.getElementsByName("sensor_actions")[0].elements;
+	var sound = $form.alert_sound.value;
+	var reading = $form.reading.value;
+	var msg = $form.message.value;
+
+	var html='<li class="sensor_action"><a class="item-link item-content" href="#">';
+	html+='<div class="item-media"><img width="80" src="http://lorempixel.com/160/160/people/1"></div>';
+	html+='<div class="item-inner">';
+	html+='<div class="item-title-row">';
+	html+='<div class="item-title">'+sound+'</div>';
+	html+='<div class="item-after">'+reading+'</div>';
+	html+='</div>';
+	html+='<div class="item-text">'+msg+'</div>';
+	html+='</div></a></li>';
+	
+	jQuery(html).insertBefore("form[name='add_sensor'] ul li:last-child");
+	myApp.alert("Action Added to form","App",function(){
+		$form.alert_sound.options.selectedIndex=0;
+		$form.reading.value="";
+		$form.message.value="";
+	});
+
+	/*var html='<li class="item-content">';
+	html+='<div class="item-inner">';
+	html+='<div class="item-title">'+sound+'</div>';
+	html+='</div>';
+	html+='<div class="item-after"> <span class="badge">'+reading+'</span></div>';
+	html+='</li>';*/
+}
+
+function add_sensor(){
+
+	var DataObj=new Object();
+	var data=jQuery("form[name='add_sensor']").serializeArray();
+	for(var i in data){
+		DataObj[data[i].name]=data[i].value;
+	}
+	var actions = new Array();
+	jQuery(".sensor_action").each(function(){
+		var sound = $(this).find(".item-title").text();
+		var reading = $(this).find(".item-after").text();
+		var message = $(this).find(".item-text").text();
+		actions.push({"sound":sound,"reading":reading,"message":message});
+	});
+	DataObj["actions"]=actions;
+	jQuery.ajax({
+		url:server+"/webservice/controller.php?action=add-sensor",
+		type:"POST",
+		data:DataObj,
+		async:true,
+		beforeSend:function(){
+			myApp.showIndicator();				
+		},
+		success:function(res){
+			var data = JSON.parse(res);
+			if(!data.error){
+				myApp.alert("Sensor Added successfully!","App",function(){
+					mainView.router.reloadPage("add-sensor.html");
+				});
+			}		
+		},
+		complete:function(){
+			myApp.hideIndicator();
+		}
+	});
+
+}
